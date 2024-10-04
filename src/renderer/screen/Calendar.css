@@ -1,0 +1,11 @@
+#CalendarContainer {
+  width: 70vw;
+  height: 95vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#Calendar {
+  height: 95%;
+}

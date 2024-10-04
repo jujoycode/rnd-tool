@@ -1,0 +1,49 @@
+{
+  "name": "rnd-tool",
+  "version": "0.0.1",
+  "description": "R&D Tool",
+  "keywords": [
+    "Quintet",
+    "R&D",
+    "CALS"
+  ],
+  "author": "jh.ryu@quintet.co.kr",
+  "license": "MIT",
+  "homepage": ".",
+  "main": "dist/main/main.js",
+  "scripts": {
+    "build": "node esbuild.config.js",
+    "react-start": "react-scripts start",
+    "electron-start": "electron .",
+    "start": "concurrently \"pnpm run react-start\" \"pnpm run electron-start\""
+  },
+  "dependencies": {
+    "@rsuite/icons": "^1.0.3",
+    "browser-crypto": "^2.1.0",
+    "electron": "^32.1.2",
+    "electron-is-dev": "^3.0.1",
+    "esbuild": "^0.24.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "rsuite": "^5.70.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.9",
+    "@types/react-dom": "^18.3.0",
+    "concurrently": "^9.0.1",
+    "react-scripts": "^5.0.1",
+    "typescript": "^5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}

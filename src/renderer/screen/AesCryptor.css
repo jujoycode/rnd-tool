@@ -1,0 +1,42 @@
+#cryptorContainer {
+  width: 90%;
+  height: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: space-around;
+  margin-top: 10%;
+  overflow-y: auto;
+}
+
+#enctyprContainer {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  width: 70%;
+}
+
+#enctyprContainer input {
+  margin-top: 5px;
+}
+
+#btnContainer {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  width: 100%;
+}
+
+#btnContainer .rs-btn {
+  width: 50%;
+  height: 7vh;
+}
+
+.title {
+  font-size: 150%;
+}
+
+#headerGruop {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
