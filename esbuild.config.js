@@ -1,20 +1,20 @@
-const esbuild = require("esbuild");
+const esbuild = require('esbuild')
 
 const buildOptions = {
-  entryPoints: ["src/main/main.ts", "src/index.tsx"],
+  entryPoints: ['src/main/main.ts', 'src/index.tsx', 'src/server/index.ts'],
   bundle: true,
-  outdir: "dist",
-  platform: "node",
-  target: "node20",
-  external: ["electron"],
+  outdir: 'dist',
+  platform: 'node',
+  target: 'node20',
+  external: ['electron'],
   loader: {
-    ".tsx": "tsx",
-    ".ts": "ts",
-    ".png": "file",
-    ".jpg": "file",
-    ".svg": "file",
+    '.tsx': 'tsx',
+    '.ts': 'ts',
+    '.png': 'file',
+    '.jpg': 'file',
+    '.svg': 'file',
   },
-  publicPath: "/assets", // 이미지 파일의 public 경로
-};
+  publicPath: '/assets', // 이미지 파일의 public 경로
+}
 
-esbuild.build(buildOptions).catch(() => process.exit(1));
+esbuild.build(buildOptions).catch(() => process.exit(1))

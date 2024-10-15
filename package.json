@@ -15,7 +15,8 @@
     "build": "node esbuild.config.js",
     "react-start": "react-scripts start",
     "electron-start": "electron .",
-    "start": "concurrently \"pnpm run react-start\" \"pnpm run electron-start\""
+    "server-start": "node dist/server/index.js",
+    "start": "concurrently \"pnpm run server-start\" \"pnpm run react-start\" \"pnpm run electron-start\""
   },
   "dependencies": {
     "@rsuite/icons": "^1.0.3",
@@ -23,11 +24,13 @@
     "electron": "^32.1.2",
     "electron-is-dev": "^3.0.1",
     "esbuild": "^0.24.0",
+    "express": "5.0.0-beta.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "rsuite": "^5.70.3"
   },
   "devDependencies": {
+    "@types/express": "^5.0.0",
     "@types/react": "^18.3.9",
     "@types/react-dom": "^18.3.0",
     "concurrently": "^9.0.1",
