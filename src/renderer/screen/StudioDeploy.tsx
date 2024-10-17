@@ -9,46 +9,46 @@ import {
   Uploader,
   Text,
   Tag,
-} from "rsuite";
-import { useEffect, useState } from "react";
+} from 'rsuite'
+import { useEffect, useState } from 'react'
 
-import { T_STUDIO_APPLICATION } from "../../data/aplacc";
-import { ApplicationData } from "../../interface/aplacc.interface";
+import { T_STUDIO_APPLICATION } from '../../data/aplacc' //TEST: 추후 DB 연결 후 삭제
+import type { ApplicationData } from '../../interface/aplacc.interface'
 
-import "./StudioDeploy.css";
+import './StudioDeploy.css'
 
 function StudioDeploy() {
-  const [step, setStep] = useState(0);
+  const [step, setStep] = useState(0)
   const [applicationData, setApplicationData] = useState(
     T_STUDIO_APPLICATION.map((item) => ({ ...item, isCheck: false }))
-  );
-  const [fileData, setFileData] = useState([]);
-  const [btnLoad, setBtnLoad] = useState(false);
+  )
+  const [fileData, setFileData] = useState([])
+  const [btnLoad, setBtnLoad] = useState(false)
 
   useEffect(() => {
-    console.log(fileData);
-  }, [fileData]);
+    console.log(fileData)
+  }, [fileData])
 
-  const { Column, HeaderCell, Cell } = Table;
+  const { Column, HeaderCell, Cell } = Table
 
   function handleClickRow(rowData: ApplicationData) {
     const newData = applicationData.map((item) =>
       item.id === rowData.id ? { ...item, isCheck: !item.isCheck } : item
-    );
+    )
 
-    setApplicationData(newData);
+    setApplicationData(newData)
   }
 
   function handleCheckChange(value: boolean, rowIndex: number) {
-    const newData = [...applicationData];
-    newData[rowIndex].isCheck = value;
+    const newData = [...applicationData]
+    newData[rowIndex].isCheck = value
 
-    setApplicationData(newData);
+    setApplicationData(newData)
   }
 
   function handleClickStart() {
-    setStep(1);
-    setFileData([]);
+    setStep(1)
+    setFileData([])
   }
 
   return (
@@ -60,7 +60,7 @@ function StudioDeploy() {
       </Heading>
 
       <Container id="body">
-        <Steps id="StepsContainer" vertical color={"green"} current={step}>
+        <Steps id="StepsContainer" vertical color={'green'} current={step}>
           <Steps.Item title="Prepare" />
           <Steps.Item title="Backup" />
           <Steps.Item title="Deploy" />
@@ -76,14 +76,12 @@ function StudioDeploy() {
           >
             <Column align="center" fixed width={30}>
               <HeaderCell>#</HeaderCell>
-              <Cell dataKey="isCheck" style={{ alignContent: "center" }}>
+              <Cell dataKey="isCheck" style={{ alignContent: 'center' }}>
                 {(rowData, rowIndex) => (
                   <Checkbox
-                    color={"green"}
+                    color={'green'}
                     checked={rowData.isCheck}
-                    onChange={(_, checked) =>
-                      handleCheckChange(checked, rowIndex!)
-                    }
+                    onChange={(_, checked) => handleCheckChange(checked, rowIndex!)}
                   />
                 )}
               </Cell>
@@ -106,13 +104,13 @@ function StudioDeploy() {
           </Uploader>
           <ButtonGroup id="btnContainer-studioDeploy">
             <Button
-              color={"green"}
-              appearance={"primary"}
+              color={'green'}
+              appearance={'primary'}
               disabled={!applicationData.some((data) => data.isCheck === true)}
               loading={btnLoad}
               onClick={() => {
-                setBtnLoad(true);
-                handleClickStart();
+                setBtnLoad(true)
+                handleClickStart()
               }}
             >
               Start
@@ -121,7 +119,7 @@ function StudioDeploy() {
         </Container>
       </Container>
     </Container>
-  );
+  )
 }
 
-export default StudioDeploy;
+export default StudioDeploy

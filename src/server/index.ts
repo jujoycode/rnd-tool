@@ -1,10 +1,8 @@
 import express from 'express'
+import { ComLogin } from './routes/comLogin';
+import { ComDeploy } from './routes/comDeploy';
 
-interface AppConfig {
-  port: number,
-  middlewares: Array<any>,
-  routes: Array<any>
-}
+import type { AppConfig, AppRouter } from 'interface/server.interface';
 
 class App {
   private app: express.Application;
@@ -25,6 +23,7 @@ class App {
    */
   private applyMiddlewares(middlewares: any) {
     middlewares.forEach((middleware: any) => {
+      console.log('🛠 Set Middleware: ')
       this.app.use(middleware);
     })
   }
@@ -33,9 +32,10 @@ class App {
    * applyRoutes
    * @param routes
    */
-  private applyRoutes(routes: any) {
-    routes.forEach((route: any) => {
-      this.app.use(route.url, route.controller);
+  private applyRoutes(routes: AppRouter[]) {
+    routes.forEach(route => {
+      console.log(`📡 Set Router: ${route.routeUrl}`)
+      this.app.use(route.routeUrl, route.router);
     })
   }
 
@@ -60,6 +60,8 @@ new App(
   {
     port: 5001,
     routes: [
+      new ComLogin(),
+      new ComDeploy()
     ],
     middlewares: [
       // cors(corsConfig),

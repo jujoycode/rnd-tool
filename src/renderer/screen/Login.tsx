@@ -1,9 +1,8 @@
 import { useState } from 'react'
 
 import background from '../../assets/green_tinted_image_further_reduced.png'
-import myLogo from '../../assets/logoTest.png'
 
-import { InputGroup, Input, Button, Container, useToaster, Message } from 'rsuite'
+import { InputGroup, Input, Button, Container, useToaster, Message, Heading } from 'rsuite'
 import { UserBadge, CharacterLock } from '@rsuite/icons'
 
 import './Login.css'
@@ -60,7 +59,7 @@ function Login(props: { isLogin: boolean; setIsLogin: (value: boolean) => void }
         <img id="image" src={background} />
       </Container>
       <Container id="loginContainer">
-        <img id="logo" src={myLogo} />
+        <Heading level={2}>CALS Admin Tool</Heading>
         <div id="loginForm">
           <InputGroup inside>
             <InputGroup.Addon>
