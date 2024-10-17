@@ -16,14 +16,13 @@ class App {
     this.applyRoutes(appConfig.routes);
   }
 
-
   /**
    * applyMiddlewares
    * @param middlewares 
    */
   private applyMiddlewares(middlewares: any) {
     middlewares.forEach((middleware: any) => {
-      console.log('🛠 Set Middleware: ')
+      console.log(`🛠  Set Middleware: ${middleware.name}`)
       this.app.use(middleware);
     })
   }
