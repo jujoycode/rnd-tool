@@ -1,5 +1,39 @@
-#pathContainer {
+#SourceManage {
+  display: flex;
+  width: 100%;
+}
+
+#SourceManage_top {
+  width: 100%;
+  height: 10vh;
   display: flex;
   flex-direction: row;
   align-items: center;
+  align-content: flex-start;
+}
+
+#SourceManage_optionSelect {
+  width: 100%;
+  height: 80vh;
+  align-items: center;
+}
+
+#SourceManage_bottom {
+  width: 100%;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
+
+#SourceManage_pagination {
+  margin-right: 5vw;
+}
+
+.sourceRadio {
+  text-align: left;
+}
+
+.rs-stack-item sourceRadio rs-radio-tile rs-stack {
+  gap: 5%;
 }
