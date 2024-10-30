@@ -1,73 +1,61 @@
-import { useEffect, useState } from "react";
-import {
-  Container,
-  Nav,
-  Sidenav,
-  Avatar,
-  Divider,
-  Text,
-  Heading,
-} from "rsuite";
-import {
-  Peoples,
-  SingleSource,
-  Tools,
-  Calendar as CalendarIcon,
-  Gear,
-  Import,
-} from "@rsuite/icons";
+import { useEffect, useState } from 'react'
+import { Container, Nav, Sidenav, Avatar, Divider, Text, Heading } from 'rsuite'
+import { Peoples, SingleSource, Tools, Calendar as CalendarIcon, Gear, Import } from '@rsuite/icons'
 
-import AesCryptor from "./AesCryptor";
-import Calendar from "./Calendar";
-import AplDeploy from "./AplDeploy";
-import StudioDeploy from "./StudioDeploy";
-import UserInfo from "./UserInfo";
+import AesCryptor from './AesCryptor'
+import Calendar from './Calendar'
+import AplDeploy from './AplDeploy'
+import StudioDeploy from './StudioDeploy'
+import UserInfo from './UserInfo'
+import SourceManage from './SourceManage'
 
-import { userData } from "../../data/auth";
+import { userData } from '../../data/auth'
 
-import "./Home.css";
+import '../css/Home.css'
 
 function Home() {
-  const [active, setActice] = useState("0");
-  const [openUserInfo, setOpenUserInfo] = useState(false);
-  const [mainComponent, setMainCompnent] = useState(
-    <div>Select a menu option</div>
-  );
+  const [active, setActice] = useState('0')
+  const [openUserInfo, setOpenUserInfo] = useState(false)
+  const [mainComponent, setMainCompnent] = useState(<div>Select a menu option</div>)
 
   useEffect(() => {
-    renderContent();
-  }, [active]);
+    renderContent()
+  }, [active])
 
   function callUserInfo(isClose?: boolean) {
-    setOpenUserInfo(isClose ?? true);
+    setOpenUserInfo(isClose ?? true)
   }
 
   function onClickHome() {
-    setActice("0");
+    setActice('0')
   }
 
   const renderContent = () => {
     if (active === undefined) {
-      return;
+      return
     }
 
-    let Component = <></>;
+    let Component = <></>
     switch (active) {
-      case "1-1": {
-        Component = <AplDeploy />;
-        break;
+      case '1-1': {
+        Component = <AplDeploy />
+        break
       }
-      case "1-2": {
-        Component = <StudioDeploy />;
-        break;
+      case '1-2': {
+        Component = <StudioDeploy />
+        break
       }
-      case "3": {
-        Component = <Calendar />;
-        break;
+      case '3': {
+        Component = <Calendar />
+        break
       }
-      case "4-1": {
-        Component = <AesCryptor />;
-        break;
+      case '4-1': {
+        Component = <AesCryptor />
+        break
+      }
+      case '4-4': {
+        Component = <SourceManage />
+        break
       }
       default: {
         Component = (
@@ -88,21 +76,17 @@ function Home() {
             </div>
             <p>구현되지 않은 화면입니다.</p>
           </div>
-        );
-        break;
+        )
+        break
       }
     }
 
-    setMainCompnent(Component);
-  };
+    setMainCompnent(Component)
+  }
 
   return (
     <div id="Home">
-      <UserInfo
-        open={openUserInfo}
-        handleClose={() => callUserInfo(false)}
-        userInfo={userData}
-      />
+      <UserInfo open={openUserInfo} handleClose={() => callUserInfo(false)} userInfo={userData} />
 
       <Container id="sideNavContainer">
         <Sidenav id="sideNav">
@@ -118,12 +102,14 @@ function Home() {
                 <Nav.Menu title="Deploy" icon={<Import />}>
                   <Nav.Item eventKey="1-1">Application</Nav.Item>
                   <Nav.Item eventKey="1-2">Studio</Nav.Item>
+                  <Nav.Item eventKey="1-3">Lambda Map</Nav.Item>
                 </Nav.Menu>
                 <Nav.Menu title="Resource" icon={<SingleSource />}>
                   <Nav.Item eventKey="2-1">Lambda</Nav.Item>
                   <Nav.Item eventKey="2-2">ECS</Nav.Item>
                   <Nav.Item eventKey="2-3">Step Functions</Nav.Item>
                   <Nav.Item eventKey="2-4">S3</Nav.Item>
+                  <Nav.Item eventKey="2-5">Dynamo DB</Nav.Item>
                 </Nav.Menu>
                 <Nav.Item eventKey="3" icon={<CalendarIcon />}>
                   Calendar
@@ -132,19 +118,21 @@ function Home() {
                   <Nav.Item eventKey="4-1">AES Cryptor</Nav.Item>
                   <Nav.Item eventKey="4-2">Meta Parsing</Nav.Item>
                   <Nav.Item eventKey="4-3">TS Test</Nav.Item>
+                  <Nav.Item eventKey="4-4">Source Manage</Nav.Item>
                 </Nav.Menu>
                 <Nav.Item eventKey="5" icon={<Peoples />}>
                   User Pool
                 </Nav.Item>
                 <Nav.Menu title="Settings" icon={<Gear />}>
                   <Nav.Item eventKey="6-1">AWS Credential</Nav.Item>
+                  <Nav.Item eventKey="6-2">Git Credential</Nav.Item>
                 </Nav.Menu>
               </Nav>
             </Sidenav.Body>
           </Container>
           <Divider style={{ margin: 0 }} />
           <Container id="userNav" onClick={() => callUserInfo()}>
-            <Avatar circle id="userInfo" style={{ marginRight: "5%" }} />
+            <Avatar circle id="userInfo" style={{ marginRight: '5%' }} />
             <Text size="lg" weight="medium">
               {userData.id}
             </Text>
@@ -154,7 +142,7 @@ function Home() {
 
       <Container id="HomeContent">{mainComponent}</Container>
     </div>
-  );
+  )
 }
 
-export default Home;
+export default Home

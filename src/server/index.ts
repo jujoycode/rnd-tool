@@ -12,7 +12,10 @@ class App {
     this.app = express();
     this.port = appConfig.port;
 
+    console.log(`🛠  Middleware Setting 🛠`)
     this.applyMiddlewares(appConfig.middlewares);
+
+    console.log(`\n📡 Router Setting 📡`)
     this.applyRoutes(appConfig.routes);
   }
 
@@ -22,7 +25,7 @@ class App {
    */
   private applyMiddlewares(middlewares: any) {
     middlewares.forEach((middleware: any) => {
-      console.log(`🛠  Set Middleware: ${middleware.name}`)
+      console.log(`→ ${middleware.name}`)
       this.app.use(middleware);
     })
   }
@@ -33,7 +36,7 @@ class App {
    */
   private applyRoutes(routes: AppRouter[]) {
     routes.forEach(route => {
-      console.log(`📡 Set Router: ${route.routeUrl}`)
+      console.log(`→ ${route.routeUrl}`)
       this.app.use(route.routeUrl, route.router);
     })
   }
@@ -48,7 +51,7 @@ class App {
     })
 
     this.app.listen(this.port, () => {
-      console.log(`🔥 Server started on ${this.port} 🔥`);
+      console.log(`\n🔥 Server started on http://localhost:${this.port} 🔥\n`);
     })
   }
 }

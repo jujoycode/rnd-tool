@@ -17,7 +17,7 @@ import { T_APPLICATION } from '../../data/aplacc'
 
 import type { ApplicationData, FileType } from '../../interface/aplacc.interface'
 
-import './AplDeploy.css'
+import '../css/AplDeploy.css'
 
 function AplDeploy() {
   const [step, setStep] = useState(0)

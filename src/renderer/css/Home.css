@@ -8,7 +8,7 @@
 }
 
 #sideNavContainer {
-  width: 20vw;
+  width: 18vw;
   height: 100vh;
 }
 
@@ -45,6 +45,7 @@
 
 #userNav {
   height: 12%;
+  width: 65%;
   display: flex;
   flex-direction: row;
   align-items: center;

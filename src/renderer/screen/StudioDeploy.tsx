@@ -15,7 +15,7 @@ import { useEffect, useState } from 'react'
 import { T_STUDIO_APPLICATION } from '../../data/aplacc' //TEST: 추후 DB 연결 후 삭제
 import type { ApplicationData } from '../../interface/aplacc.interface'
 
-import './StudioDeploy.css'
+import '../css/StudioDeploy.css'
 
 function StudioDeploy() {
   const [step, setStep] = useState(0)

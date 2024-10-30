@@ -1,6 +1,6 @@
-import { Container, Calendar as CalendarComponent } from "rsuite"
+import { Container, Calendar as CalendarComponent } from 'rsuite'
 
-import "./Calendar.css"
+import '../css/Calendar.css'
 
 function Calendar() {
   return (

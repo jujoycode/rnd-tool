@@ -5,7 +5,7 @@ import background from '../../assets/green_tinted_image_further_reduced.png'
 import { InputGroup, Input, Button, Container, useToaster, Message, Heading } from 'rsuite'
 import { UserBadge, CharacterLock } from '@rsuite/icons'
 
-import './Login.css'
+import '../css/Login.css'
 
 import DB from '../../db/testDB'
 import { userData } from '../../data/auth'

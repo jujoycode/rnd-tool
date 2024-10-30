@@ -1,4 +1,8 @@
-import type { Router } from "express"
+import type {
+  Router,
+  Request,
+  Response
+} from "express"
 
 export interface AppConfig {
   port: number,
@@ -9,4 +13,6 @@ export interface AppConfig {
 export interface AppRouter {
   routeUrl: string,
   router: Router
-} 
+}
+
+export { Request, Response }

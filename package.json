@@ -19,7 +19,9 @@
     "start": "concurrently \"pnpm run server-start\" \"pnpm run react-start\" \"pnpm run electron-start\""
   },
   "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.679.0",
     "@aws-sdk/client-s3": "^3.673.0",
+    "@aws-sdk/lib-dynamodb": "^3.679.0",
     "@aws-sdk/s3-request-presigner": "^3.673.0",
     "@rsuite/icons": "^1.0.3",
     "browser-crypto": "^2.1.0",

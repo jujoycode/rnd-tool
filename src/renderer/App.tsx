@@ -7,7 +7,7 @@ import Login from './screen/Login'
 import Home from './screen/Home'
 
 function App() {
-  const [isLogin, setIsLogin] = useState(false)
+  const [isLogin, setIsLogin] = useState(true)
 
   return (
     <div className="container">
