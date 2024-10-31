@@ -9,22 +9,21 @@ import {
   Divider,
   Heading,
 } from 'rsuite'
-import { PagePrevious, PageNext, Icon } from '@rsuite/icons'
-import { SiAwslambda, SiAmazonecs } from 'react-icons/si'
-import { BsWindowSidebar, BsDisplay } from 'react-icons/bs'
-import { VscFolderLibrary } from 'react-icons/vsc'
+import { PagePrevious, PageNext } from '@rsuite/icons'
+import { Cpu, Monitor, BoxSelect, Server, Library } from 'lucide-react'
 
-import { useEffect, useState } from 'react'
+import { useState, useEffect } from 'react'
 
 import '../css/SourceManage.css'
 
 function SourceManage() {
   const [activePage, setActivePage] = useState(1)
   const [mainComponent, setMainComponent] = useState(<></>)
-  const [targetCategory, setTargetCategory] = useState('')
 
+  const [targetPath, setTargetPath] = useState('')
+  const [targetCategory, setTargetCategory] = useState('')
   const [nextBtnEnable, setNextBtnEnable] = useState(true)
-  const [prevBtnEnable, setPrevBtnEnable] = useState(true)
+  const [prevBtnEnable, setPrevBtnEnable] = useState(false)
 
   useEffect(() => {
     selectMainComponent()
@@ -34,6 +33,10 @@ function SourceManage() {
     setNextBtnEnable(targetCategory ? false : true)
   }, [targetCategory])
 
+  /**
+   * selectMainComponent
+   * @desc 메인 컴포넌트 선택 함수, activePage가 변경될 경우 동작
+   */
   const selectMainComponent = () => {
     let component = <></>
 
@@ -44,12 +47,10 @@ function SourceManage() {
         )
         break
       }
-
       case 2: {
         component = <OptionSelectPage />
         break
       }
-
       case 3: {
         component = <DownloadPage />
         break
@@ -62,11 +63,24 @@ function SourceManage() {
   return (
     <Container id="SourceManage">
       <Container id="SourceManage_top">
-        <Text style={{ marginLeft: '5vw' }}>Path: </Text>
-        <InlineEdit placeholder="Click to edit ..." defaultValue="C:\Users\sia\Documents\Source" />
+        <Heading style={{ marginLeft: '5vw' }} level={4}>
+          Source Management
+        </Heading>
       </Container>
-      <Container id="SourceManage_optionSelect">{mainComponent}</Container>
+      <Container id="SourceManage_main">{mainComponent}</Container>
       <Container id="SourceManage_bottom">
+        <Container id="SourceManage_path">
+          <Text>Path: </Text>
+          <InlineEdit
+            placeholder="Click to edit ..."
+            showControls={false}
+            defaultValue="/Users/juhyeong/Downloads/adminToolTest"
+            // disabled={true}
+            value={targetPath}
+            onChange={(v) => setTargetPath(v as string)}
+          />
+        </Container>
+
         <ButtonGroup id="SourceManage_pagination" size="sm">
           <Button
             disabled={prevBtnEnable}
@@ -77,7 +91,9 @@ function SourceManage() {
           </Button>
           <Button
             disabled={nextBtnEnable}
-            onClick={() => setActivePage(activePage + 1)}
+            onClick={() => {
+              setActivePage(activePage + 1)
+            }}
             endIcon={<PageNext />}
           >
             Next
@@ -93,19 +109,19 @@ function PreSelectPage(props: {
   setTargetCategory: (value: string) => void
 }) {
   return (
-    <Container>
+    <Container id="SourceManage_preSelect">
       <RadioTileGroup
-        style={{ width: '60vw' }}
+        style={{ width: '50vw' }}
         defaultValue={props.targetCategory}
         onChange={(v) => props.setTargetCategory(v as string)}
       >
-        <Heading style={{ textAlign: 'left' }} level={4}>
+        <Heading id="SourceManage_header" level={5}>
           Client
         </Heading>
 
         <RadioTile
           className="sourceRadio"
-          icon={<Icon as={BsWindowSidebar} />}
+          icon={<Monitor className="radioIcon" />}
           label="Application"
           value="application"
         >
@@ -114,7 +130,7 @@ function PreSelectPage(props: {
 
         <RadioTile
           className="sourceRadio"
-          icon={<Icon as={BsDisplay} />}
+          icon={<BoxSelect className="radioIcon" />}
           label="Studio"
           value="studio"
         >
@@ -122,26 +138,32 @@ function PreSelectPage(props: {
         </RadioTile>
 
         <Divider />
-        <Heading style={{ textAlign: 'left' }} level={4}>
+
+        <Heading id="SourceManage_header" level={5}>
           Server
         </Heading>
 
         <RadioTile
           className="sourceRadio"
-          icon={<Icon as={SiAwslambda} />}
+          icon={<Cpu className="radioIcon" />}
           label="Lambda"
           value="lambda"
         >
           Download Lambda source to destination path
         </RadioTile>
 
-        <RadioTile className="sourceRadio" icon={<Icon as={SiAmazonecs} />} label="ECS" value="ecs">
+        <RadioTile
+          className="sourceRadio"
+          icon={<Server className="radioIcon" />}
+          label="ECS"
+          value="ecs"
+        >
           Download ECS source to destination path
         </RadioTile>
 
         <RadioTile
           className="sourceRadio"
-          icon={<Icon as={VscFolderLibrary} />}
+          icon={<Library className="radioIcon" />}
           label="Framework"
           value="framework"
         >

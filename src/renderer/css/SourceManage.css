@@ -1,29 +1,47 @@
 #SourceManage {
   display: flex;
   width: 100%;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
 
 #SourceManage_top {
   width: 100%;
-  height: 10vh;
+  height: 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
   align-content: flex-start;
 }
 
-#SourceManage_optionSelect {
+#SourceManage_main {
   width: 100%;
-  height: 80vh;
+  height: 80%;
   align-items: center;
+  justify-content: center;
+  overflow-y: scroll;
 }
 
 #SourceManage_bottom {
   width: 100%;
-  height: 10vh;
+  height: 10%;
   display: flex;
   flex-direction: row;
-  justify-content: flex-end;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#SourceManage_header {
+  text-align: left;
+  margin-bottom: 1vh;
+}
+
+#SourceManage_path {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-left: 5vw;
 }
 
 #SourceManage_pagination {
@@ -34,6 +52,15 @@
   text-align: left;
 }
 
-.rs-stack-item sourceRadio rs-radio-tile rs-stack {
-  gap: 5%;
+.radioIcon {
+  margin-left: 5px;
+  margin-right: 1vw;
+}
+
+.rs-divider-horizontal {
+  margin: 12px 0;
+}
+
+#SourceManage_preSelect {
+  height: 100%;
 }
