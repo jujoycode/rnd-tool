@@ -10,7 +10,7 @@ import {
   Heading,
 } from 'rsuite'
 import { PagePrevious, PageNext } from '@rsuite/icons'
-import { Cpu, Monitor, BoxSelect, Server, Library } from 'lucide-react'
+import { SquareFunction, PanelsTopLeft, WandSparkles, Server, Boxes } from 'lucide-react'
 
 import { useState, useEffect } from 'react'
 
@@ -22,16 +22,33 @@ function SourceManage() {
 
   const [targetPath, setTargetPath] = useState('')
   const [targetCategory, setTargetCategory] = useState('')
-  const [nextBtnEnable, setNextBtnEnable] = useState(true)
-  const [prevBtnEnable, setPrevBtnEnable] = useState(false)
+  const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
+  const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
 
   useEffect(() => {
     selectMainComponent()
+    setPrevBtnDisabled(activePage === 1 ? true : false)
   }, [activePage])
 
   useEffect(() => {
-    setNextBtnEnable(targetCategory ? false : true)
-  }, [targetCategory])
+    switch (activePage) {
+      case 1: {
+        // 첫 페이지는 카테고리와 경로가 모두 있어야 함
+        setNextBtnDisabled(!targetCategory || !targetPath)
+        break
+      }
+      case 2: {
+        // 두 번째 페이지는 ~
+        setNextBtnDisabled(false)
+        break
+      }
+      case 3: {
+        // 마지막 페이지는 Next 버튼 비활성화
+        setNextBtnDisabled(true)
+        break
+      }
+    }
+  }, [activePage, targetCategory, targetPath])
 
   /**
    * selectMainComponent
@@ -75,7 +92,7 @@ function SourceManage() {
             placeholder="Click to edit ..."
             showControls={false}
             defaultValue="/Users/juhyeong/Downloads/adminToolTest"
-            // disabled={true}
+            disabled={activePage !== 1}
             value={targetPath}
             onChange={(v) => setTargetPath(v as string)}
           />
@@ -83,14 +100,14 @@ function SourceManage() {
 
         <ButtonGroup id="SourceManage_pagination" size="sm">
           <Button
-            disabled={prevBtnEnable}
+            disabled={prevBtnDisabled}
             onClick={() => setActivePage(activePage - 1)}
             startIcon={<PagePrevious />}
           >
             Prev
           </Button>
           <Button
-            disabled={nextBtnEnable}
+            disabled={nextBtnDisabled}
             onClick={() => {
               setActivePage(activePage + 1)
             }}
@@ -121,7 +138,7 @@ function PreSelectPage(props: {
 
         <RadioTile
           className="sourceRadio"
-          icon={<Monitor className="radioIcon" />}
+          icon={<PanelsTopLeft className="radioIcon" />}
           label="Application"
           value="application"
         >
@@ -130,7 +147,7 @@ function PreSelectPage(props: {
 
         <RadioTile
           className="sourceRadio"
-          icon={<BoxSelect className="radioIcon" />}
+          icon={<WandSparkles className="radioIcon" />}
           label="Studio"
           value="studio"
         >
@@ -145,7 +162,7 @@ function PreSelectPage(props: {
 
         <RadioTile
           className="sourceRadio"
-          icon={<Cpu className="radioIcon" />}
+          icon={<SquareFunction className="radioIcon" />}
           label="Lambda"
           value="lambda"
         >
@@ -163,7 +180,7 @@ function PreSelectPage(props: {
 
         <RadioTile
           className="sourceRadio"
-          icon={<Library className="radioIcon" />}
+          icon={<Boxes className="radioIcon" />}
           label="Framework"
           value="framework"
         >

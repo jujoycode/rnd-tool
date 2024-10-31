@@ -133,7 +133,7 @@ function Home() {
           <Divider style={{ margin: 0 }} />
           <Container id="userNav" onClick={() => callUserInfo()}>
             <Avatar circle id="userInfo" style={{ marginRight: '5%' }} />
-            <Text size="lg" weight="medium">
+            <Text size="lg" weight="medium" style={{ marginLeft: '5%' }}>
               {userData.id}
             </Text>
           </Container>

@@ -1,5 +1,6 @@
 import { HeadingGroup, Heading, Input, ButtonGroup, Button, Tag, useToaster, Message } from 'rsuite'
 import { createCipheriv, createDecipheriv } from 'browser-crypto'
+import { LockKeyhole, LockKeyholeOpen } from 'lucide-react'
 
 import '../css/AesCryptor.css'
 import { useState } from 'react'
@@ -69,6 +70,7 @@ function AesCryptor() {
           <Button
             color={'yellow'}
             appearance={'ghost'}
+            startIcon={<LockKeyhole />}
             onClick={() => cryptoCBC(uuid, authorization, data)}
           >
             Encrypt
@@ -76,6 +78,7 @@ function AesCryptor() {
           <Button
             color={'green'}
             appearance={'ghost'}
+            startIcon={<LockKeyholeOpen />}
             onClick={() => cryptoCBC(uuid, authorization, data, true)}
           >
             Decrypt
