@@ -70,7 +70,7 @@ function AesCryptor() {
           <Button
             color={'yellow'}
             appearance={'ghost'}
-            startIcon={<LockKeyhole />}
+            startIcon={<LockKeyhole size={16} />}
             onClick={() => cryptoCBC(uuid, authorization, data)}
           >
             Encrypt
@@ -78,7 +78,7 @@ function AesCryptor() {
           <Button
             color={'green'}
             appearance={'ghost'}
-            startIcon={<LockKeyholeOpen />}
+            startIcon={<LockKeyholeOpen size={16} />}
             onClick={() => cryptoCBC(uuid, authorization, data, true)}
           >
             Decrypt

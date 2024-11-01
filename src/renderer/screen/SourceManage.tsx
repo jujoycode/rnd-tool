@@ -2,15 +2,25 @@ import {
   ButtonGroup,
   Button,
   Container,
-  InlineEdit,
-  Text,
   RadioTileGroup,
   RadioTile,
   Divider,
   Heading,
+  Form,
+  InputGroup,
+  Input,
+  Radio,
+  Toggle,
 } from 'rsuite'
-import { PagePrevious, PageNext } from '@rsuite/icons'
-import { SquareFunction, PanelsTopLeft, WandSparkles, Server, Boxes } from 'lucide-react'
+import { PagePrevious, PageNext, Icon } from '@rsuite/icons'
+import {
+  SquareFunction,
+  PanelsTopLeft,
+  WandSparkles,
+  Server,
+  Boxes,
+  FolderSearch,
+} from 'lucide-react'
 
 import { useState, useEffect } from 'react'
 
@@ -18,64 +28,22 @@ import '../css/SourceManage.css'
 
 function SourceManage() {
   const [activePage, setActivePage] = useState(1)
-  const [mainComponent, setMainComponent] = useState(<></>)
 
-  const [targetPath, setTargetPath] = useState('')
   const [targetCategory, setTargetCategory] = useState('')
   const [nextBtnDisabled, setNextBtnDisabled] = useState(true)
   const [prevBtnDisabled, setPrevBtnDisabled] = useState(true)
 
   useEffect(() => {
-    selectMainComponent()
     setPrevBtnDisabled(activePage === 1 ? true : false)
-  }, [activePage])
 
-  useEffect(() => {
-    switch (activePage) {
-      case 1: {
-        // 첫 페이지는 카테고리와 경로가 모두 있어야 함
-        setNextBtnDisabled(!targetCategory || !targetPath)
-        break
-      }
-      case 2: {
-        // 두 번째 페이지는 ~
-        setNextBtnDisabled(false)
-        break
-      }
-      case 3: {
-        // 마지막 페이지는 Next 버튼 비활성화
-        setNextBtnDisabled(true)
-        break
-      }
-    }
-  }, [activePage, targetCategory, targetPath])
-
-  /**
-   * selectMainComponent
-   * @desc 메인 컴포넌트 선택 함수, activePage가 변경될 경우 동작
-   */
-  const selectMainComponent = () => {
-    let component = <></>
-
-    switch (activePage) {
-      case 1: {
-        component = (
-          <PreSelectPage targetCategory={targetCategory} setTargetCategory={setTargetCategory} />
-        )
-        break
-      }
-      case 2: {
-        component = <OptionSelectPage />
-        break
-      }
-      case 3: {
-        component = <DownloadPage />
-        break
-      }
+    if (activePage === 1) {
+      setNextBtnDisabled(!targetCategory)
     }
 
-    return setMainComponent(component)
-  }
+    if (activePage === 2) {
+      setNextBtnDisabled(true)
+    }
+  }, [activePage, targetCategory])
 
   return (
     <Container id="SourceManage">
@@ -84,9 +52,15 @@ function SourceManage() {
           Source Management
         </Heading>
       </Container>
-      <Container id="SourceManage_main">{mainComponent}</Container>
+      <Container id="SourceManage_main">
+        {activePage === 1 ? (
+          <PreSelectPage targetCategory={targetCategory} setTargetCategory={setTargetCategory} />
+        ) : (
+          <OptionSelectPage targetCategory={targetCategory} setTargetCategory={setTargetCategory} />
+        )}
+      </Container>
       <Container id="SourceManage_bottom">
-        <Container id="SourceManage_path">
+        {/* <Container id="SourceManage_path">
           <Text>Path: </Text>
           <InlineEdit
             placeholder="Click to edit ..."
@@ -96,7 +70,7 @@ function SourceManage() {
             value={targetPath}
             onChange={(v) => setTargetPath(v as string)}
           />
-        </Container>
+        </Container> */}
 
         <ButtonGroup id="SourceManage_pagination" size="sm">
           <Button
@@ -191,12 +165,51 @@ function PreSelectPage(props: {
   )
 }
 
-function OptionSelectPage() {
-  return <Container></Container>
-}
+function OptionSelectPage(props: {
+  targetCategory: string
+  setTargetCategory: (value: string) => void
+}) {
+  return (
+    <Container id="SourceManage_optionSelect">
+      <Container id="SourceManage_form">
+        <Form>
+          <Form.Group controlId="path">
+            <Form.ControlLabel>Path</Form.ControlLabel>
+            <InputGroup inside>
+              <Input color="green" />
+              <InputGroup.Button>
+                <FolderSearch size={16} />
+              </InputGroup.Button>
+            </InputGroup>
+          </Form.Group>
 
-function DownloadPage() {
-  return <Container></Container>
+          <Form.Group>
+            <Form.ControlLabel>Operation</Form.ControlLabel>
+            <Radio color="green">Download</Radio>
+            <Radio color="green">Update</Radio>
+          </Form.Group>
+
+          <Form.Group>
+            <Form.ControlLabel>Scope</Form.ControlLabel>
+            <Radio color="green">All</Radio>
+            <Radio color="green">Selected</Radio>
+          </Form.Group>
+
+          <Form.Group controlId="version">
+            <Form.ControlLabel>Version</Form.ControlLabel>
+            <Form.Control
+              name="enable"
+              color="green"
+              accepter={Toggle}
+              unCheckedChildren="v1"
+              checkedChildren="v2"
+            />
+          </Form.Group>
+        </Form>
+      </Container>
+      <Container id="SourceManage_log"></Container>
+    </Container>
+  )
 }
 
 export default SourceManage
