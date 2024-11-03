@@ -72,13 +72,39 @@
 }
 
 #SourceManage_form {
-  width: 60%;
+  width: 40%;
+  height: 100%;
   display: flex;
   align-items: center;
   text-align: left;
+  overflow-y: auto;
+}
+
+.SourceManage_panel {
+  width: 90%;
+  height: 90%;
+  justify-content: space-between;
+}
+
+
+.stackBox{
+  margin-bottom: 2%;
 }
 
 #SourceManage_log {
-  width: 40%;
+  width: 60%;
+  height: 100%;
   display: flex;
+}
+
+#SourceManage_accordion {
+  width: 90%;
+}
+
+#scopeList {
+  overflow-y: scroll;
+}
+
+#log_container {
+  height: 55%;
 }

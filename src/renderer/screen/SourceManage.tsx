@@ -6,13 +6,18 @@ import {
   RadioTile,
   Divider,
   Heading,
-  Form,
   InputGroup,
   Input,
   Radio,
   Toggle,
+  Text,
+  RadioGroup,
+  VStack,
+  Panel,
+  Accordion,
+  Progress,
+  Footer,
 } from 'rsuite'
-import { PagePrevious, PageNext, Icon } from '@rsuite/icons'
 import {
   SquareFunction,
   PanelsTopLeft,
@@ -20,6 +25,9 @@ import {
   Server,
   Boxes,
   FolderSearch,
+  SquareTerminal,
+  ChevronLeft,
+  ChevronRight,
 } from 'lucide-react'
 
 import { useState, useEffect } from 'react'
@@ -76,7 +84,7 @@ function SourceManage() {
           <Button
             disabled={prevBtnDisabled}
             onClick={() => setActivePage(activePage - 1)}
-            startIcon={<PagePrevious />}
+            startIcon={<ChevronLeft size={16} />}
           >
             Prev
           </Button>
@@ -85,7 +93,7 @@ function SourceManage() {
             onClick={() => {
               setActivePage(activePage + 1)
             }}
-            endIcon={<PageNext />}
+            endIcon={<ChevronRight size={16} />}
           >
             Next
           </Button>
@@ -169,45 +177,100 @@ function OptionSelectPage(props: {
   targetCategory: string
   setTargetCategory: (value: string) => void
 }) {
+  const [targetPath, setTargetPath] = useState('')
+  const [operation, setOperation] = useState('')
+  const [scope, setScope] = useState('')
+
+  const LogHeader = (
+    <>
+      <SquareTerminal size={16} />
+      <Text size="md" style={{ marginLeft: '2%' }}>
+        Event Log
+      </Text>
+    </>
+  )
+
   return (
     <Container id="SourceManage_optionSelect">
       <Container id="SourceManage_form">
-        <Form>
-          <Form.Group controlId="path">
-            <Form.ControlLabel>Path</Form.ControlLabel>
+        <Panel className="SourceManage_panel" bordered>
+          <VStack className="stackBox">
+            <Text>Path</Text>
             <InputGroup inside>
-              <Input color="green" />
+              <Input value={targetPath} onChange={setTargetPath} />
               <InputGroup.Button>
                 <FolderSearch size={16} />
               </InputGroup.Button>
             </InputGroup>
-          </Form.Group>
+          </VStack>
 
-          <Form.Group>
-            <Form.ControlLabel>Operation</Form.ControlLabel>
-            <Radio color="green">Download</Radio>
-            <Radio color="green">Update</Radio>
-          </Form.Group>
+          <VStack className="stackBox">
+            <Text>Operation</Text>
+            <RadioGroup inline value={operation} onChange={(v) => setOperation(v as string)}>
+              <Radio color="green" value="Download">
+                Download
+              </Radio>
+              <Radio color="green" value="Update">
+                Update
+              </Radio>
+            </RadioGroup>
+          </VStack>
 
-          <Form.Group>
-            <Form.ControlLabel>Scope</Form.ControlLabel>
-            <Radio color="green">All</Radio>
-            <Radio color="green">Selected</Radio>
-          </Form.Group>
+          <VStack className="stackBox">
+            <Text>Scope</Text>
+            <RadioGroup inline value={scope} onChange={(v) => setScope(v as string)}>
+              <Radio color="green" value="All">
+                All
+              </Radio>
+              <Radio color="green" value="Selected">
+                Selected
+              </Radio>
+            </RadioGroup>
+          </VStack>
 
-          <Form.Group controlId="version">
-            <Form.ControlLabel>Version</Form.ControlLabel>
-            <Form.Control
+          {/* <VStack className="stackBox">
+            <Panel bordered>
+              <CheckboxGroup id="scopeList">
+                <Checkbox value="CalsComWebCommonSelectData">CalsComWebCommonSelectData</Checkbox>
+                <Checkbox value="CalsComWebCommonSaveData">CalsComWebCommonSaveData</Checkbox>
+              </CheckboxGroup>
+            </Panel>
+          </VStack> */}
+
+          {/* <VStack className="stackBox">
+            <Text>Default Branch</Text>
+            <Input placeholder="priod1" />
+            <Input placeholder="priod2" />
+            <Input placeholder="priod3" />
+          </VStack> */}
+
+          <VStack className="stackBox">
+            <Text>Version</Text>
+            <Toggle
               name="enable"
               color="green"
-              accepter={Toggle}
+              defaultChecked
               unCheckedChildren="v1"
               checkedChildren="v2"
             />
-          </Form.Group>
-        </Form>
+          </VStack>
+
+          <VStack className="stackBox">
+            <Button block appearance="primary" color="green">
+              Start
+              {/* Processing... */}
+            </Button>
+            {/* <Progress.Line /> */}
+          </VStack>
+        </Panel>
       </Container>
-      <Container id="SourceManage_log"></Container>
+      <Container id="SourceManage_log">
+        <Container id="SourceManage_accordion">
+          <Accordion bordered>
+            <Accordion.Panel header={LogHeader}></Accordion.Panel>
+          </Accordion>
+        </Container>
+      </Container>
     </Container>
   )
 }
