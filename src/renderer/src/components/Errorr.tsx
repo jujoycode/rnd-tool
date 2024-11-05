@@ -1,4 +1,4 @@
-import { Title, Text, Button, Container, Group } from "@mantine/core"
+import { Text, Button, Container, Group } from "@mantine/core"
 import classes from "../style/Error.module.css"
 
 export function ErrorPage() {
