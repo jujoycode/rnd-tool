@@ -1,4 +1,4 @@
-import { app, BrowserWindow } from 'electron'
+import { app, BrowserWindow, ipcMain, dialog } from 'electron'
 import * as path from 'path'
 
 import isDev from 'electron-is-dev'
@@ -10,10 +10,10 @@ function createWindow() {
     width: 1200,
     height: 700,
     webPreferences: {
-      nodeIntegration: true,
-      contextIsolation: false,
-      devTools: isDev ? isDev : false
-    },
+      devTools: isDev ? isDev : false,
+      contextIsolation: true,
+      nodeIntegration: false
+    }
   })
 
   mainWindow.loadURL(
@@ -27,6 +27,7 @@ function createWindow() {
   })
 }
 
+
 app.on('ready', createWindow)
 
 app.on('window-all-closed', () => {
@@ -39,4 +40,13 @@ app.on('activate', () => {
   if (mainWindow === null) {
     createWindow()
   }
+})
+
+// 디렉토리 선택 다이얼로그
+ipcMain.handle('fs:selectDirectory', async () => {
+  const result = await dialog.showOpenDialog({
+    properties: ['openDirectory']
+  })
+
+  return result.canceled ? null : result.filePaths[0]
 })

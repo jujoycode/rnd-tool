@@ -120,9 +120,10 @@ function Home() {
                   <Nav.Item eventKey="4-3">TS Test</Nav.Item>
                   <Nav.Item eventKey="4-4">Source Manage</Nav.Item>
                 </Nav.Menu>
-                <Nav.Item eventKey="5" icon={<Peoples />}>
-                  User Pool
-                </Nav.Item>
+                <Nav.Menu eventKey="5" title="User Pool" icon={<Peoples />}>
+                  <Nav.Item eventKey="5-1">R&D Tool</Nav.Item>
+                  <Nav.Item eventKey="5-2">CALS Studio</Nav.Item>
+                </Nav.Menu>
                 <Nav.Menu title="Settings" icon={<Gear />}>
                   <Nav.Item eventKey="6-1">AWS Credential</Nav.Item>
                   <Nav.Item eventKey="6-2">Git Credential</Nav.Item>

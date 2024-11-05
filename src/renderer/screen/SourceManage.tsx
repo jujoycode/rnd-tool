@@ -180,6 +180,7 @@ function OptionSelectPage(props: {
   const [targetPath, setTargetPath] = useState('')
   const [operation, setOperation] = useState('')
   const [scope, setScope] = useState('')
+  const [eventLogs, setEventLogs] = useState<string[]>([])
 
   const LogHeader = (
     <>
@@ -190,45 +191,63 @@ function OptionSelectPage(props: {
     </>
   )
 
+  const printEventLog = (event: string) => {
+    const now = new Date()
+    const date = now.toISOString().split('T')[0]
+    const time = now.toTimeString().split(' ')[0]
+    const timestamp = `[${date} ${time}]`
+    setEventLogs((prev) => [...prev, `${timestamp} ${event}`])
+  }
+
+  useEffect(() => {
+    setEventLogs([])
+    printEventLog('Open Source Management')
+  }, [])
+
   return (
     <Container id="SourceManage_optionSelect">
       <Container id="SourceManage_form">
         <Panel className="SourceManage_panel" bordered>
-          <VStack className="stackBox">
-            <Text>Path</Text>
-            <InputGroup inside>
-              <Input value={targetPath} onChange={setTargetPath} />
-              <InputGroup.Button>
-                <FolderSearch size={16} />
-              </InputGroup.Button>
-            </InputGroup>
-          </VStack>
+          <Container id="SourceManage_panel_form">
+            <VStack className="stackBox">
+              <Text>Path</Text>
+              <InputGroup inside>
+                <Input value={targetPath} onChange={setTargetPath} />
+                <InputGroup.Button
+                  onClick={() => {
+                    printEventLog('Open Folder Dialog')
+                  }}
+                >
+                  <FolderSearch size={16} />
+                </InputGroup.Button>
+              </InputGroup>
+            </VStack>
 
-          <VStack className="stackBox">
-            <Text>Operation</Text>
-            <RadioGroup inline value={operation} onChange={(v) => setOperation(v as string)}>
-              <Radio color="green" value="Download">
-                Download
-              </Radio>
-              <Radio color="green" value="Update">
-                Update
-              </Radio>
-            </RadioGroup>
-          </VStack>
+            <VStack className="stackBox">
+              <Text>Operation</Text>
+              <RadioGroup inline value={operation} onChange={(v) => setOperation(v as string)}>
+                <Radio color="green" value="Download">
+                  Download
+                </Radio>
+                <Radio color="green" value="Update">
+                  Update
+                </Radio>
+              </RadioGroup>
+            </VStack>
 
-          <VStack className="stackBox">
-            <Text>Scope</Text>
-            <RadioGroup inline value={scope} onChange={(v) => setScope(v as string)}>
-              <Radio color="green" value="All">
-                All
-              </Radio>
-              <Radio color="green" value="Selected">
-                Selected
-              </Radio>
-            </RadioGroup>
-          </VStack>
+            <VStack className="stackBox">
+              <Text>Scope</Text>
+              <RadioGroup inline value={scope} onChange={(v) => setScope(v as string)}>
+                <Radio color="green" value="All">
+                  All
+                </Radio>
+                <Radio color="green" value="Selected">
+                  Selected
+                </Radio>
+              </RadioGroup>
+            </VStack>
 
-          {/* <VStack className="stackBox">
+            {/* <VStack className="stackBox">
             <Panel bordered>
               <CheckboxGroup id="scopeList">
                 <Checkbox value="CalsComWebCommonSelectData">CalsComWebCommonSelectData</Checkbox>
@@ -237,37 +256,66 @@ function OptionSelectPage(props: {
             </Panel>
           </VStack> */}
 
-          {/* <VStack className="stackBox">
+            {/* <VStack className="stackBox">
             <Text>Default Branch</Text>
             <Input placeholder="priod1" />
             <Input placeholder="priod2" />
             <Input placeholder="priod3" />
           </VStack> */}
 
-          <VStack className="stackBox">
-            <Text>Version</Text>
-            <Toggle
-              name="enable"
-              color="green"
-              defaultChecked
-              unCheckedChildren="v1"
-              checkedChildren="v2"
-            />
-          </VStack>
+            <VStack className="stackBox">
+              <Text>Version</Text>
+              <Toggle
+                name="enable"
+                color="green"
+                defaultChecked
+                unCheckedChildren="v1"
+                checkedChildren="v2"
+              />
+            </VStack>
 
-          <VStack className="stackBox">
-            <Button block appearance="primary" color="green">
-              Start
-              {/* Processing... */}
-            </Button>
-            {/* <Progress.Line /> */}
-          </VStack>
+            <VStack className="stackBox">
+              <Text>Package Install</Text>
+              <Toggle
+                name="enable"
+                color="green"
+                defaultChecked
+                checkedChildren="Yes"
+                unCheckedChildren="No"
+              />
+            </VStack>
+          </Container>
+
+          <Container id="SourceManage_panel_btn">
+            <VStack className="stackBox">
+              <Button
+                block
+                appearance="primary"
+                color="green"
+                onClick={() => {
+                  printEventLog('Process Start')
+                }}
+              >
+                Start
+                {/* Processing... */}
+              </Button>
+              {/* <Progress.Line showInfo={false} /> */}
+            </VStack>
+          </Container>
         </Panel>
       </Container>
       <Container id="SourceManage_log">
         <Container id="SourceManage_accordion">
           <Accordion bordered>
-            <Accordion.Panel header={LogHeader}></Accordion.Panel>
+            <Accordion.Panel defaultExpanded header={LogHeader}>
+              <VStack spacing={8}>
+                {eventLogs.map((log, index) => (
+                  <Text key={index} size="sm">
+                    {log}
+                  </Text>
+                ))}
+              </VStack>
+            </Accordion.Panel>
           </Accordion>
         </Container>
       </Container>

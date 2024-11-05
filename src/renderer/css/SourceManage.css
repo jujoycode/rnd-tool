@@ -8,7 +8,7 @@
 
 #SourceManage_top {
   width: 100%;
-  height: 15%;
+  height: 10%;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -83,11 +83,27 @@
 .SourceManage_panel {
   width: 90%;
   height: 90%;
+}
+
+.rs-panel-body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
   justify-content: space-between;
 }
 
+#SourceManage_panel_form {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+}
 
-.stackBox{
+#SourceManage_panel_btn {
+  height: 20%;
+  display: flex;
+}
+
+.stackBox {
   margin-bottom: 2%;
 }
 
