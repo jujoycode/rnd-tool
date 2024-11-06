@@ -1,3 +1,4 @@
+import { Group, Text, Radio, RadioGroup, Stack } from '@mantine/core'
 import { useState } from 'react'
 
 import { ActionsGrid } from '@renderer/components/ActionGrid'
@@ -40,7 +41,23 @@ function SourceContent({ type }: { type: SourceManagerType }): JSX.Element {
 function Lambda(): JSX.Element {
   return (
     <div>
-      <SourceForm onSubmit={() => {}}></SourceForm>
+      <SourceForm onSubmit={() => {}}>
+        {/* 1. Operation */}
+        <Stack align="center" justify="centerflex-start">
+          <Text size="xs" mt={7} fw={500}>
+            Operation
+          </Text>
+          <Group>
+            <Radio label="dd" />
+            <Radio label="dd" />
+          </Group>
+        </Stack>
+        {/* 2. Scope */}
+        {/* 2.1 Select List */}
+        {/* 3. Default Branch */}
+        {/* 4. Version */}
+        {/* 5. Package Install */}
+      </SourceForm>
     </div>
   )
 }

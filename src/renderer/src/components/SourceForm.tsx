@@ -16,10 +16,9 @@ export default function SourceForm(props: SourceFormProps) {
       name="Search"
       size={16}
       onClick={() => {
-        window.electron.ipcRenderer.sendSync('getTargetPath')
-
-        window.electron.ipcRenderer.on('getTargetPath', (event, args) => {
-          console.log('getTargetPath', args)
+        window.electron.ipcRenderer.send('getTargetPath')
+        window.electron.ipcRenderer.once('getTargetPath', (_, args) => {
+          console.log(args)
         })
       }}
     />

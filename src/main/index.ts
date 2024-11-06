@@ -1,4 +1,4 @@
-import { app, shell, BrowserWindow, ipcMain } from 'electron'
+import { app, shell, BrowserWindow, ipcMain, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import icon from '../../resources/icon.jpeg?asset'
@@ -33,6 +33,17 @@ function createWindow(): void {
   } else {
     mainWindow.loadFile(join(__dirname, '../renderer/index.html'))
   }
+
+  // IPC
+  /**
+   * getTargetPath
+   * @desc dialog를 통한 경로 선택 후 반환
+   */
+  ipcMain.on('getTargetPath', async (event, _) => {
+    const targetPath = await dialog.showOpenDialog(mainWindow)
+    event.sender.send('getTargetPath', targetPath)
+  })
+
 }
 
 // This method will be called when Electron has finished
@@ -69,10 +80,3 @@ app.on('window-all-closed', () => {
 
 // In this file you can include the rest of your app"s specific main process
 // code. You can also put them in separate files and require them here.
-
-// IPC
-ipcMain.on('getTargetPath', (event, args) => {
-  console.log('getTargetPath', args)
-
-  event.reply('getTargetPath', 'test')
-})
