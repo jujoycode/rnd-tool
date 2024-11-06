@@ -1,34 +1,29 @@
-import NavbarClass from "../style/Navbar.module.css";
+import NavbarClass from "../style/Navbar.module.css"
 
-import { Tooltip, UnstyledButton, Stack } from "@mantine/core";
-import { Icon, type IconProps } from "../components/Icon";
+import { Tooltip, UnstyledButton, Stack } from "@mantine/core"
+import { Icon, type IconProps } from "../components/Icon"
 
-import type { NavbarProps } from "../interface";
+import type { NavbarProps } from "../interface"
 
 interface NavbarLinkProps {
-  icon: JSX.Element;
-  label: string;
-  active?: boolean;
-  onClick?(): void;
+  icon: JSX.Element
+  label: string
+  active?: boolean
+  onClick?(): void
 }
 
 function NavbarIcon({ name }: { name: IconProps["name"] }) {
-  return <Icon name={name} size={18} strokeWidth={1} />;
+  return <Icon name={name} size={18} strokeWidth={1} />
 }
 
 function NavbarLink({ icon, label, active, onClick }: NavbarLinkProps): JSX.Element {
   return (
     <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} style={{ fontSize: "10px" }}>
-      <UnstyledButton
-        color="green"
-        onClick={onClick}
-        className={NavbarClass.link}
-        data-active={active || undefined}
-      >
+      <UnstyledButton color="green" onClick={onClick} className={NavbarClass.link} data-active={active || undefined}>
         {icon}
       </UnstyledButton>
     </Tooltip>
-  );
+  )
 }
 
 const navigationData = [
@@ -39,7 +34,7 @@ const navigationData = [
   { icon: <NavbarIcon name="CalendarDays" />, label: "Calendar" },
   { icon: <NavbarIcon name="Hammer" />, label: "Utility" },
   { icon: <NavbarIcon name="User" />, label: "User Pool" },
-];
+]
 
 export function Navbar(props: NavbarProps): JSX.Element {
   const links = navigationData.map((link, index) => (
@@ -49,7 +44,7 @@ export function Navbar(props: NavbarProps): JSX.Element {
       active={index === props.activeMenu}
       onClick={() => props.setActiveMenu(index)}
     />
-  ));
+  ))
 
   return (
     <nav className={NavbarClass.navbar}>
@@ -64,5 +59,5 @@ export function Navbar(props: NavbarProps): JSX.Element {
         <NavbarLink icon={<NavbarIcon name="LogOut" />} label="Logout" />
       </Stack>
     </nav>
-  );
+  )
 }

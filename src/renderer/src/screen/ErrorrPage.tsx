@@ -1,6 +1,6 @@
-import ErrorClass from "../style/Error.module.css";
+import ErrorClass from "../style/Error.module.css"
 
-import { Text, Button, Container, Group } from "@mantine/core";
+import { Text, Button, Container, Group } from "@mantine/core"
 
 export function ErrorPage() {
   return (
@@ -16,5 +16,5 @@ export function ErrorPage() {
         </Button>
       </Group>
     </Container>
-  );
+  )
 }

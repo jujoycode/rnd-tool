@@ -1,19 +1,22 @@
-import "./style/App.css";
-import "@mantine/core/styles.css";
+import "./style/App.css"
+import "@mantine/core/styles.css"
 
-import { MantineProvider } from "@mantine/core";
-import { Home } from "@renderer/screen/Home";
+import { useState } from "react"
+import { MantineProvider } from "@mantine/core"
 
-import { myTheme } from "./theme";
+import { Home } from "@renderer/screen/Home"
+import { Loader } from "@renderer/components/Loader"
+
+import { myTheme } from "./theme"
 
 function App(): JSX.Element {
-  // const ipcHandle = (): void => window.electron.ipcRenderer.send('ping')s
+  const [isLoading, setIsLoading] = useState(true)
 
   return (
     <MantineProvider theme={myTheme}>
-      <Home />
+      {isLoading ? <Loader title="Initializing..." isLoading={isLoading} setIsLoading={setIsLoading} /> : <Home />}
     </MantineProvider>
-  );
+  )
 }
 
-export default App;
+export default App

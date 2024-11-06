@@ -16,7 +16,7 @@
   text-align: center;
   padding: 24px;
   border-radius: 12px;
-  height: 160px;
+  height: 120px;
   background-color: #f8f9fa;
   cursor: pointer;
   border: 2px solid transparent;
@@ -33,4 +33,12 @@
 .item:active {
   transform: translateY(0);
   box-shadow: 0 2px 6px rgba(34, 139, 230, 0.1);
+  border-color: var(--mantine-color-themeColor-5);
+}
+
+.item.selected {
+  background-color: #fff;
+  border-color: var(--mantine-color-themeColor-5);
+  box-shadow: 0 4px 14px rgba(34, 139, 230, 0.15);
+  transform: translateY(-2px);
 }
