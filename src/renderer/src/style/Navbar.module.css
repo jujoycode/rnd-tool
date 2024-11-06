@@ -12,14 +12,13 @@
 }
 
 .link {
-  width: 100%;
-  height: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   color: light-dark(var(--mantine-color-gray-7), var(--mantine-color-dark-0));
   margin-top: rem(15px);
   border-radius: var(--mantine-radius-md);
+  transition: transform 0.2s ease;
 
   &:hover {
     background-color: light-dark(var(--mantine-color-gray-0), var(--manstine-color-dark-5));
@@ -29,7 +28,9 @@
     &,
     &:hover {
       background-color: var(--mantine-color-green-light);
-      color: var(--mantine-color-green-light-color);
+      color: #537757;
+      transform: scale(1.3);
+      transition: transform 0.2s ease;
     }
   }
 }
