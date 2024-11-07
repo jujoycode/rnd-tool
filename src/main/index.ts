@@ -40,7 +40,7 @@ function createWindow(): void {
    * @desc dialog를 통한 경로 선택 후 반환
    */
   ipcMain.on('getTargetPath', async (event, _) => {
-    const targetPath = await dialog.showOpenDialog(mainWindow)
+    const targetPath = await dialog.showOpenDialog(mainWindow, { properties: ['openDirectory'] })
     event.sender.send('getTargetPath', targetPath)
   })
 

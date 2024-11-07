@@ -1,5 +1,6 @@
 .root {
   position: relative;
+  margin-bottom: var(--mantine-spacing-md);
 }
 
 .label {
@@ -32,6 +33,8 @@
 }
 
 .input {
+  color: var(--mantine-color-gray-8);
+
   &::placeholder {
     transition: color 150ms ease;
     color: transparent;

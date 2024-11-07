@@ -27,8 +27,12 @@ export interface LoaderProps {
 export type SourceManagerType = '' | "lambda" | "ecs" | 'framework' | 'application' | 'studio'
 
 export interface SourceFormProps {
-  children?: React.ReactNode;
-  onSubmit: (data: any) => void;
+  title: string
+  onClear: () => void
+  onSubmit?: () => void
+  children?: React.ReactNode
+  modalCondition?: boolean
+  modalContent?: React.ReactNode
 }
 
 export interface LogViewerProps {
@@ -39,5 +43,6 @@ export interface FloatingLabelInputProps {
   label: string;
   value: string;
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  placeholder?: string;
   [key: string]: any;
 }

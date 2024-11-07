@@ -1,10 +1,10 @@
-import FloatingLabelClass from "@renderer/style/FloatingLabelInput.module.css"
+import FloatingLabelClass from '@renderer/style/FloatingLabelInput.module.css'
 
-import { useState } from "react"
+import { useState } from 'react'
 
-import { TextInput } from "@mantine/core"
+import { TextInput } from '@mantine/core'
 
-import type { FloatingLabelInputProps } from "@renderer/interface"
+import type { FloatingLabelInputProps } from '@renderer/interface'
 
 export function FloatingLabelInput(props: FloatingLabelInputProps) {
   const [focused, setFocused] = useState(false)
@@ -12,6 +12,7 @@ export function FloatingLabelInput(props: FloatingLabelInputProps) {
 
   return (
     <TextInput
+      placeholder={props.placeholder}
       required
       classNames={FloatingLabelClass}
       onFocus={() => setFocused(true)}
@@ -19,7 +20,7 @@ export function FloatingLabelInput(props: FloatingLabelInputProps) {
       mt="md"
       autoComplete="nope"
       data-floating={floating}
-      labelProps={{ "data-floating": floating }}
+      labelProps={{ 'data-floating': floating }}
       {...props}
     />
   )
