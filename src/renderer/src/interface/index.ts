@@ -9,6 +9,7 @@ export interface NavbarProps {
 export interface ActionGridProps {
   title: string;
   ActionItems: ActionItem[];
+  ItemGrid?: number
   onItemClick: (itemTitle: string) => void;
 }
 
@@ -24,7 +25,8 @@ export interface LoaderProps {
   setIsLoading: (isLoading: boolean) => void;
 }
 
-export type SourceManagerType = '' | "lambda" | "ecs" | 'framework' | 'application' | 'studio'
+export type SourceType = "Lambda" | "ECS" | 'Framework' | 'Application' | 'Studio'
+export type OperationType = 'Download' | 'Update'
 
 export interface SourceFormProps {
   title: string

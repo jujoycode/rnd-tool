@@ -1,11 +1,11 @@
-import HomeClass from "../style/Home.module.css"
+import HomeClass from '../style/Home.module.css'
 
-import { useEffect, useState } from "react"
+import { useEffect, useState } from 'react'
 
-import { Navbar } from "@renderer/components/Navbar"
+import { Navbar } from '@renderer/components/Navbar'
 
-import { ErrorPage } from "@renderer/screen/ErrorrPage"
-import { SourceManager } from "@renderer/screen/SourceManager"
+import { ErrorPage } from '@renderer/screen/ErrorrPage'
+import { SourceManager } from '@renderer/screen/SourceManager/index'
 
 export function Home(): JSX.Element {
   const [mainComponent, setMainComponent] = useState(<></>)

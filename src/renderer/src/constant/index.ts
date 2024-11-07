@@ -23,4 +23,15 @@ export class ProjectConstant {
       icon: "WandSparkles",
     },
   ] as ActionItem[]
+
+  static OPERATION_CATEGORY = [
+    {
+      title: "Download",
+      icon: "HardDriveDownload",
+    },
+    {
+      title: "Update",
+      icon: "FolderSync",
+    },
+  ] as ActionItem[]
 }

@@ -1,46 +1,10 @@
-import { Group, Text, Radio, RadioGroup, Stack, TextInput, Checkbox, Switch, Box, Paper } from '@mantine/core'
 import { useEffect, useState } from 'react'
 
-import { ActionsGrid } from '@renderer/components/ActionGrid'
-import { ProjectConstant } from '@renderer/constant'
-
+import { Group, Text, Radio, RadioGroup, Stack, TextInput, Checkbox, Switch, Box, Paper } from '@mantine/core'
 import SourceForm from '@renderer/components/SourceForm'
 
-import type { SourceManagerType } from '@renderer/interface'
-
-export function SourceManager(): JSX.Element {
-  const [targetCategory, setTargetCategory] = useState<SourceManagerType>('')
-
-  return (
-    <>
-      {targetCategory ? (
-        <SourceContent type={targetCategory} />
-      ) : (
-        <ActionsGrid
-          title="Source Manager"
-          ActionItems={ProjectConstant.SOURCE_CATEGORY}
-          onItemClick={(name) => setTargetCategory(name as SourceManagerType)}
-        />
-      )}
-    </>
-  )
-}
-
-function SourceContent({ type }: { type: SourceManagerType }): JSX.Element {
-  const contents = {
-    Lambda: <Lambda />,
-    ECS: <ECS />,
-    Framework: <Framework />,
-    Application: <Application />,
-    Studio: <Studio />,
-  }
-
-  return contents[type]
-}
-
-function Lambda(): JSX.Element {
+export function Lambda({ operation }: { operation: string }): JSX.Element {
   const [startFlag, setStartFlag] = useState(false)
-  const [operation, setOperation] = useState('')
   const [scope, setScope] = useState('')
   const [selectedItems, setSelectedItems] = useState<string[]>([])
   const [defaultBranch, setDefaultBranch] = useState(false)
@@ -54,7 +18,6 @@ function Lambda(): JSX.Element {
    * @desc 전체 값 초기화
    */
   function handleClear() {
-    setOperation('')
     setScope('')
     setSelectedItems([])
     setDefaultBranch(false)
@@ -113,21 +76,6 @@ function Lambda(): JSX.Element {
             Basic Settings
           </Text>
           <Stack gap="md">
-            <RadioGroup
-              label={
-                <Text fw={500} size="sm">
-                  Operation
-                </Text>
-              }
-              value={operation}
-              onChange={setOperation}
-            >
-              <Group mt={4}>
-                <Radio w={100} color="themeColor.6" value="download" label="Download" />
-                <Radio w={100} color="themeColor.6" value="update" label="Update" />
-              </Group>
-            </RadioGroup>
-
             <RadioGroup
               label={
                 <Text fw={500} size="sm">
@@ -232,20 +180,4 @@ function Lambda(): JSX.Element {
       </Stack>
     </SourceForm>
   )
-}
-
-function ECS(): JSX.Element {
-  return <div>ECS</div>
-}
-
-function Framework(): JSX.Element {
-  return <div>Framework</div>
-}
-
-function Application(): JSX.Element {
-  return <div>Application</div>
-}
-
-function Studio(): JSX.Element {
-  return <div>Studio</div>
 }

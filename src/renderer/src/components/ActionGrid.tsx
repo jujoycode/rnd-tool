@@ -1,11 +1,11 @@
-import ActionGridClass from "@renderer/style/ActionGrid.module.css"
+import ActionGridClass from '@renderer/style/ActionGrid.module.css'
 
-import { useState } from "react"
+import { useState } from 'react'
 
-import { Card, Text, SimpleGrid, UnstyledButton, Group } from "@mantine/core"
-import { Icon } from "@renderer/components/Icon"
+import { Card, Text, SimpleGrid, UnstyledButton, Group } from '@mantine/core'
+import { Icon } from '@renderer/components/Icon'
 
-import type { ActionGridProps } from "@renderer/interface"
+import type { ActionGridProps } from '@renderer/interface'
 
 export function ActionsGrid(props: ActionGridProps) {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
@@ -13,7 +13,7 @@ export function ActionsGrid(props: ActionGridProps) {
   const items = props.ActionItems.map((item) => (
     <UnstyledButton
       key={item.title}
-      className={`${ActionGridClass.item} ${selectedItem === item.title ? ActionGridClass.selected : ""}`}
+      className={`${ActionGridClass.item} ${selectedItem === item.title ? ActionGridClass.selected : ''}`}
       onClick={() => {
         setSelectedItem(item.title)
         props.onItemClick?.(item.title)
@@ -33,7 +33,7 @@ export function ActionsGrid(props: ActionGridProps) {
           {props.title}
         </Text>
       </Group>
-      <SimpleGrid cols={3} mt="md" spacing="xl">
+      <SimpleGrid cols={props.ItemGrid ? props.ItemGrid : 3} mt="md" spacing="xl">
         {items}
       </SimpleGrid>
     </Card>
