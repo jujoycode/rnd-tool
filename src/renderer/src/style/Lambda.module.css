@@ -1,0 +1,27 @@
+.container {
+  display: grid;
+  grid-template-columns: minmax(300px, 380px) auto;
+  gap: 1rem;
+  padding: 1rem;
+}
+
+.mainCard {
+  background: white;
+  border-color: var(--mantine-color-gray-2);
+  transition: all 0.2s ease;
+}
+
+.mainCard:hover {
+  border-color: var(--mantine-color-gray-4);
+}
+
+.repoCard {
+  background: white;
+  border-color: var(--mantine-color-gray-2);
+  transition: all 0.2s ease;
+  max-width: 380px;
+}
+
+.repoCard:hover {
+  border-color: var(--mantine-color-gray-4);
+}

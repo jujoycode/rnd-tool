@@ -1,9 +1,9 @@
-import NavbarClass from "../style/Navbar.module.css"
+import NavbarClass from '../style/Navbar.module.css'
 
-import { Tooltip, UnstyledButton, Stack } from "@mantine/core"
-import { Icon, type IconProps } from "../components/Icon"
+import { Tooltip, UnstyledButton, Stack } from '@mantine/core'
+import { Icon, type IconProps } from '../components/Icon'
 
-import type { NavbarProps } from "../interface"
+import type { NavbarProps } from '../interface'
 
 interface NavbarLinkProps {
   icon: JSX.Element
@@ -12,13 +12,13 @@ interface NavbarLinkProps {
   onClick?(): void
 }
 
-function NavbarIcon({ name }: { name: IconProps["name"] }) {
+function NavbarIcon({ name }: { name: IconProps['name'] }) {
   return <Icon name={name} size={18} strokeWidth={1} />
 }
 
 function NavbarLink({ icon, label, active, onClick }: NavbarLinkProps): JSX.Element {
   return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} style={{ fontSize: "10px" }}>
+    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} style={{ fontSize: '10px' }}>
       <UnstyledButton color="green" onClick={onClick} className={NavbarClass.link} data-active={active || undefined}>
         {icon}
       </UnstyledButton>
@@ -27,13 +27,14 @@ function NavbarLink({ icon, label, active, onClick }: NavbarLinkProps): JSX.Elem
 }
 
 const navigationData = [
-  { icon: <NavbarIcon name="House" />, label: "Home" },
-  { icon: <NavbarIcon name="CloudUpload" />, label: "Deploy" },
-  { icon: <NavbarIcon name="Package" />, label: "Resource" },
-  { icon: <NavbarIcon name="Gitlab" />, label: "Source Manager" },
-  { icon: <NavbarIcon name="CalendarDays" />, label: "Calendar" },
-  { icon: <NavbarIcon name="Hammer" />, label: "Utility" },
-  { icon: <NavbarIcon name="User" />, label: "User Pool" },
+  { icon: <NavbarIcon name="House" />, label: 'Home' },
+  { icon: <NavbarIcon name="CloudUpload" />, label: 'Deploy' },
+  { icon: <NavbarIcon name="Package" />, label: 'Resource' },
+  { icon: <NavbarIcon name="Gitlab" />, label: 'Source Manager' },
+  { icon: <NavbarIcon name="CalendarDays" />, label: 'Calendar' },
+  { icon: <NavbarIcon name="TestTubeDiagonal" />, label: 'Test' },
+  { icon: <NavbarIcon name="Hammer" />, label: 'Utility' },
+  { icon: <NavbarIcon name="User" />, label: 'User Pool' },
 ]
 
 export function Navbar(props: NavbarProps): JSX.Element {

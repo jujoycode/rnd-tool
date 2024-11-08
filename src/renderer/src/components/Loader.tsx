@@ -1,32 +1,42 @@
-import LoaderClass from "@renderer/style/Loader.module.css"
+import LoaderClass from '@renderer/style/Loader.module.css'
 
-import { Center, Stack, Text } from "@mantine/core"
-import { useState, useEffect } from "react"
+import { Center, Stack, Text } from '@mantine/core'
+import { useState, useEffect, useRef } from 'react'
 
-import type { LoaderProps } from "@renderer/interface"
+import type { LoaderProps } from '@renderer/interface'
 
 export function Loader(props: LoaderProps): JSX.Element {
   const [loadingProgress, setLoadingProgress] = useState(0)
 
-  useEffect(() => {
-    const progressInterval = setInterval(() => {
-      setLoadingProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(progressInterval)
-          return 100
-        }
-        return prev + 2
-      })
-    }, 20)
-
-    return () => clearInterval(progressInterval)
-  }, [])
+  const progressRef = useRef<number>(0)
+  const rafRef = useRef<number>()
 
   useEffect(() => {
-    if (loadingProgress >= 100) {
-      props.setIsLoading(false)
+    let startTime = performance.now()
+    const duration = 2000 // 2초 동안 로딩
+
+    const animate = (currentTime: number) => {
+      const elapsed = currentTime - startTime
+      const progress = Math.min((elapsed / duration) * 100, 100)
+
+      progressRef.current = progress
+      setLoadingProgress(progress)
+
+      if (progress < 100) {
+        rafRef.current = requestAnimationFrame(animate)
+      } else {
+        props.setIsLoading(false)
+      }
     }
-  }, [loadingProgress, props.setIsLoading])
+
+    rafRef.current = requestAnimationFrame(animate)
+
+    return () => {
+      if (rafRef.current) {
+        cancelAnimationFrame(rafRef.current)
+      }
+    }
+  }, [props.setIsLoading])
 
   return (
     <div>

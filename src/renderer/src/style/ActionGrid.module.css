@@ -42,3 +42,10 @@
   box-shadow: 0 4px 14px rgba(34, 139, 230, 0.15);
   transform: translateY(-2px);
 }
+
+.iconWrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}

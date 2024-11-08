@@ -1,183 +1,117 @@
-import { useEffect, useState } from 'react'
+import { Stack, Text, Switch, SegmentedControl, Group, Button } from '@mantine/core'
+import { useForm } from '@mantine/form'
+import { useState } from 'react'
 
-import { Group, Text, Radio, RadioGroup, Stack, TextInput, Checkbox, Switch, Box, Paper } from '@mantine/core'
 import SourceForm from '@renderer/components/SourceForm'
+import { RepositoryModal } from './RepositoryModal'
 
-export function Lambda({ operation }: { operation: string }): JSX.Element {
-  const [startFlag, setStartFlag] = useState(false)
-  const [scope, setScope] = useState('')
-  const [selectedItems, setSelectedItems] = useState<string[]>([])
-  const [defaultBranch, setDefaultBranch] = useState(false)
-  const [priorityCount, setPriorityCount] = useState(1)
-  const [v2Flag, setV2Flag] = useState(true)
-  const [packageInstallFlag, setPackageInstallFlag] = useState(false)
-  const [process, setProcess] = useState<number>(0)
+export function Lambda() {
+  const [drawerOpened, setDrawerOpened] = useState(false)
+  const [searchQuery, setSearchQuery] = useState('')
 
-  /**
-   * handleClear
-   * @desc 전체 값 초기화
-   */
-  function handleClear() {
-    setScope('')
-    setSelectedItems([])
-    setDefaultBranch(false)
-    setV2Flag(true)
-    setPackageInstallFlag(false)
+  const form = useForm({
+    initialValues: {
+      version: 'v2',
+      installPackages: false,
+      installType: 'all',
+      selectedRepos: [],
+    },
+  })
+
+  const handleSubmit = () => {
+    // 제출 로직 구현
   }
 
-  /**
-   * handleSubmit
-   * @desc Start 버튼 클릭 시 동작
-   */
-  function handleSubmit() {
-    const startParam = {
-      operation,
-      scope,
-      selectedItems: scope === 'selected' ? selectedItems : undefined,
-      v2Flag,
-      packageInstallFlag,
-    }
-
-    window.electron.ipcRenderer.send(`${operation}Lambda`, startParam)
+  const handleClear = () => {
+    form.reset()
   }
 
-  // scope가 all일 경우, selectedItems 초기화
-  useEffect(() => {
-    if (scope === 'all') {
-      setSelectedItems([])
-    }
-  }, [scope, selectedItems])
+  const repoOptions = [
+    { value: 'CalsComWebCommonSelectData', label: 'CalsComWebCommonSelectData', description: '/ComCommonSelect' },
+    { value: 'CalsComWebCommonSaveData', label: 'CalsComWebCommonSaveData', description: '/ComCommonSave' },
+    { value: 'CalsComWebCommonDeleteData', label: 'CalsComWebCommonDeleteData', description: '/ComCommonSave' },
+  ]
 
-  /**
-   * 시작 버튼 활성화 여부 판단
-   * @desc1 operation이 공백이라면 비활성화
-   * @desc2 scope가 공백이라면 비활성화
-   * @desc3 scope가 selected이면서 selectedItems가 빈 배열이라면 비활성화
-   */
-  useEffect(() => {
-    const shouldDisableStart = operation === '' || scope === '' || (scope === 'selected' && selectedItems.length === 0)
-
-    setStartFlag(!shouldDisableStart)
-  }, [operation, scope, selectedItems])
-
-  const modalContent = <div>modal</div>
+  const repositories = repoOptions.map((repo) => repo.value)
 
   return (
-    <SourceForm
-      title="Lambda"
-      onClear={handleClear}
-      onSubmit={handleSubmit}
-      modalCondition={startFlag}
-      modalContent={modalContent}
-    >
-      <Stack gap="xl">
-        <Paper withBorder p="md">
-          <Text size="md" fw={600} mb="md">
-            Basic Settings
-          </Text>
-          <Stack gap="md">
-            <RadioGroup
-              label={
-                <Text fw={500} size="sm">
-                  Scope
-                </Text>
-              }
-              value={scope}
-              onChange={setScope}
-            >
-              <Group mt={4}>
-                <Radio w={100} color="themeColor.6" value="all" label="All" />
-                <Radio w={100} color="themeColor.6" value="selected" label="Selected" />
-              </Group>
-            </RadioGroup>
+    <>
+      <SourceForm
+        title="Lambda"
+        onSubmit={handleSubmit}
+        onClear={handleClear}
+        modalCondition={form.values.installType === 'all' || form.values.selectedRepos.length > 0}
+        modalContent={<Text>Processing lambda sources...</Text>}
+      >
+        <Stack gap="md">
+          <Group justify="space-between" align="center">
+            <Text size="xs" c="primary">
+              Version:
+            </Text>
+            <SegmentedControl
+              w={150}
+              size="xs"
+              radius="md"
+              data={[
+                { label: 'v1', value: 'v1' },
+                { label: 'v2', value: 'v2' },
+              ]}
+              {...form.getInputProps('version')}
+            />
+          </Group>
 
-            {scope === 'selected' && (
-              <Checkbox.Group value={selectedItems} onChange={setSelectedItems}>
-                <Box ml={16}>
-                  <Stack gap={8}>
-                    <Checkbox
-                      color="themeColor.6"
-                      value="CalsComWebCommonSelectData"
-                      label="CalsComWebCommonSelectData"
-                    />
-                  </Stack>
-                </Box>
-              </Checkbox.Group>
-            )}
+          <Group justify="space-between" align="center">
+            <Text size="xs" c="primary">
+              Include Packages:
+            </Text>
+            <Switch
+              size="lg"
+              color="themeColor.6"
+              onLabel="Yes"
+              offLabel="No"
+              {...form.getInputProps('installPackages', { type: 'checkbox' })}
+            />
+          </Group>
+          <Group justify="space-between" align="center">
+            <Text size="xs" c="primary">
+              Installation Type:
+            </Text>
+            <SegmentedControl
+              w={150}
+              size="xs"
+              radius="md"
+              data={[
+                { label: 'All', value: 'all' },
+                { label: 'Selected', value: 'selected' },
+              ]}
+              {...form.getInputProps('installType')}
+              onChange={(value) => {
+                form.setFieldValue('installType', value)
+                form.setFieldValue('selectedRepos', [])
+              }}
+            />
+          </Group>
 
+          {form.values.installType === 'selected' && (
             <Group justify="space-between" align="center">
-              <Text fw={500} size="sm">
-                Default Branch
+              <Text size="xs" c="primary">
+                Target:
               </Text>
-              <Switch
-                size="md"
-                color="themeColor.6"
-                onLabel="Yes"
-                offLabel="No"
-                checked={defaultBranch}
-                onChange={(event) => setDefaultBranch(event.currentTarget.checked)}
-              />
+              <Button size="xs" variant="light" color="themeColor.6" onClick={() => setDrawerOpened(true)}>
+                {form.values.selectedRepos.length} selected
+              </Button>
             </Group>
+          )}
+        </Stack>
+      </SourceForm>
 
-            {defaultBranch && (
-              <Stack gap={8} ml={16}>
-                <TextInput size="sm" placeholder="Enter branch name" label="Priority 1" required />
-                {priorityCount >= 2 && (
-                  <TextInput size="sm" placeholder="Enter branch name (optional)" label="Priority 2" />
-                )}
-                {priorityCount === 3 && (
-                  <TextInput size="sm" placeholder="Enter branch name (optional)" label="Priority 3" />
-                )}
-                {priorityCount < 3 && (
-                  <Text
-                    size="sm"
-                    c="themeColor.4"
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => setPriorityCount((prev) => prev + 1)}
-                  >
-                    + Add priority
-                  </Text>
-                )}
-              </Stack>
-            )}
-          </Stack>
-        </Paper>
-
-        <Paper withBorder p="md">
-          <Text size="md" fw={600} mb="md">
-            Configuration
-          </Text>
-          <Stack gap="md">
-            <Group justify="space-between" align="center">
-              <Text fw={500} size="sm">
-                Version
-              </Text>
-              <Switch
-                size="md"
-                color="themeColor.6"
-                onLabel="v2"
-                offLabel="v1"
-                checked={v2Flag}
-                onChange={(event) => setV2Flag(event.currentTarget.checked)}
-              />
-            </Group>
-
-            <Group justify="space-between" align="center">
-              <Text fw={500} size="sm">
-                Package Install
-              </Text>
-              <Switch
-                size="md"
-                color="themeColor.6"
-                onLabel="Yes"
-                offLabel="No"
-                checked={packageInstallFlag}
-                onChange={(event) => setPackageInstallFlag(event.currentTarget.checked)}
-              />
-            </Group>
-          </Stack>
-        </Paper>
-      </Stack>
-    </SourceForm>
+      <RepositoryModal
+        opened={drawerOpened}
+        onClose={() => setDrawerOpened(false)}
+        repositories={repositories}
+        selectedRepos={form.values.selectedRepos}
+        onSelectionChange={(selected) => form.setFieldValue('selectedRepos', selected as never[])}
+      />
+    </>
   )
 }

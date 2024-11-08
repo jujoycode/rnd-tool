@@ -1,5 +1,6 @@
 import SourceFormClass from '@renderer/style/SourceForm.module.css'
-import { Button, Card, Container, Group, Title, Modal, Text, Box } from '@mantine/core'
+
+import { Button, Card, Container, Group, Title, Modal, Text } from '@mantine/core'
 import { useState } from 'react'
 
 import { FloatingLabelInput } from '@renderer/components/FloatingLabelInput'
@@ -73,12 +74,11 @@ export default function SourceForm(props: SourceFormProps) {
               rightSection={PathSearchButton}
             />
 
-            <Box mt="md" className={SourceFormClass.box}>
-              {props.children}
-            </Box>
+            {props.children}
 
             <Button
               fullWidth
+              className={SourceFormClass.startButton}
               mt="lg"
               size="sm"
               radius="md"

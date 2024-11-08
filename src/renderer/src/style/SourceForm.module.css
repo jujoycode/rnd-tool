@@ -7,12 +7,12 @@
   transition: all 0.2s ease-in-out;
 }
 
-.button:hover {
-  transform: scale(1.05);
-  filter: brightness(0.9);
+.startButton {
+  margin-top: 50px;
+  transition: all 0.2s ease-in-out;
 }
 
-.box {
-  height: 300px;
-  overflow-y: auto;
+.button:hover {
+  transform: scale(1.08);
+  filter: brightness(0.9);
 }

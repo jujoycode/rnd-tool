@@ -14,7 +14,6 @@
 
 .loadingBar {
   height: 100%;
-  width: 100%;
   background: linear-gradient(
     90deg,
     var(--mantine-color-themeColor-3) 0%,
@@ -22,13 +21,14 @@
     var(--mantine-color-themeColor-4) 100%
   );
   background-size: 200% 100%;
-  animation: loading 2s linear infinite;
   border-radius: 10px;
   position: relative;
+  animation: loading 2s linear infinite;
+  transition: width 0.1s linear;
 }
 
 .loadingBar::after {
-  content: "";
+  content: '';
   position: absolute;
   top: 0;
   left: 0;

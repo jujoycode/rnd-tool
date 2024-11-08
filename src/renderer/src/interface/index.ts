@@ -8,15 +8,16 @@ export interface NavbarProps {
 
 export interface ActionGridProps {
   title: string;
+  description?: string;
   ActionItems: ActionItem[];
   ItemGrid?: number
-  onItemClick: (itemTitle: string) => void;
+  onItemClick: (itemValue: string) => void;
 }
 
 export interface ActionItem {
   title: string;
+  value: string;
   icon: IconProps["name"];
-  color?: MantineColor;
 }
 
 export interface LoaderProps {
@@ -25,8 +26,8 @@ export interface LoaderProps {
   setIsLoading: (isLoading: boolean) => void;
 }
 
-export type SourceType = "Lambda" | "ECS" | 'Framework' | 'Application' | 'Studio'
-export type OperationType = 'Download' | 'Update'
+export type SourceType = "lambda" | "ecs" | "framework" | "application" | "studio"
+export type OperationType = "download" | "update"
 
 export interface SourceFormProps {
   title: string
@@ -47,4 +48,11 @@ export interface FloatingLabelInputProps {
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   [key: string]: any;
+}
+
+export interface RepositoryModalProps {
+  opened: boolean
+  onClose: () => void
+  title: string
+  content: React.ReactNode
 }

@@ -7,25 +7,15 @@ import { ProjectConstant } from '@renderer/constant'
 import type { SourceType, OperationType } from '@renderer/interface'
 
 export function SourceManager(): JSX.Element {
-  const [source, setSource] = useState<SourceType>()
   const [operation, setOperation] = useState<OperationType>()
+  const [source, setSource] = useState<SourceType>()
 
   return (
     <>
-      {!source && !operation && <SourceItemGrid onItemClick={(v) => setSource(v)} />}
-      {source && !operation && <OperationItemGrid onItemClick={(v) => setOperation(v)} />}
-      {source && operation && <TargetComponent sourcType={source} operationType={operation} />}
+      {!operation && !source && <OperationItemGrid onItemClick={(v) => setOperation(v)} />}
+      {operation && !source && <SourceItemGrid onItemClick={(v) => setSource(v)} operation={operation} />}
+      {operation && source && <TargetComponent sourcType={source} operationType={operation} />}
     </>
-  )
-}
-
-function SourceItemGrid({ onItemClick }: { onItemClick: (value: SourceType) => void }) {
-  return (
-    <ActionsGrid
-      title="Source Manager"
-      ActionItems={ProjectConstant.SOURCE_CATEGORY}
-      onItemClick={(v) => onItemClick(v as SourceType)}
-    />
   )
 }
 
@@ -33,6 +23,7 @@ function OperationItemGrid({ onItemClick }: { onItemClick: (value: OperationType
   return (
     <ActionsGrid
       title="Operation"
+      description="What would you like to do with your source?"
       ActionItems={ProjectConstant.OPERATION_CATEGORY}
       ItemGrid={2}
       onItemClick={(v) => onItemClick(v as OperationType)}
@@ -40,21 +31,38 @@ function OperationItemGrid({ onItemClick }: { onItemClick: (value: OperationType
   )
 }
 
+function SourceItemGrid({
+  onItemClick,
+  operation,
+}: {
+  onItemClick: (value: SourceType) => void
+  operation: OperationType
+}) {
+  return (
+    <ActionsGrid
+      title="Source Manager"
+      description={`Select the category you want to ${operation}`}
+      ActionItems={ProjectConstant.SOURCE_CATEGORY}
+      onItemClick={(v) => onItemClick(v as SourceType)}
+    />
+  )
+}
+
 function TargetComponent({ sourcType, operationType }: { sourcType: SourceType; operationType: OperationType }) {
   switch (sourcType) {
-    case 'Lambda': {
-      return <Lambda operation={operationType} />
+    case 'lambda': {
+      return <Lambda />
     }
-    case 'ECS': {
+    case 'ecs': {
       return <></>
     }
-    case 'Framework': {
+    case 'framework': {
       return <></>
     }
-    case 'Application': {
+    case 'application': {
       return <></>
     }
-    case 'Studio': {
+    case 'studio': {
       return <></>
     }
   }
