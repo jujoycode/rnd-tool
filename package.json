@@ -26,7 +26,8 @@
     "@mantine/hooks": "^7.13.4",
     "axios": "^1.7.7",
     "electron-updater": "^6.1.7",
-    "lucide-react": "^0.454.0"
+    "lucide-react": "^0.454.0",
+    "uuid": "^11.0.3"
   },
   "devDependencies": {
     "@electron-toolkit/eslint-config-prettier": "^2.0.0",

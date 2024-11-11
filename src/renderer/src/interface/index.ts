@@ -1,9 +1,15 @@
-import { MantineColor } from "@mantine/core";
 import { IconProps } from "@renderer/components/Icon";
 
 export interface NavbarProps {
   activeMenu: number;
   setActiveMenu: (menuIndex: number) => void
+}
+
+export interface NavbarLinkProps {
+  icon: JSX.Element
+  label: string
+  active?: boolean
+  onClick?(): void
 }
 
 export interface ActionGridProps {
@@ -38,10 +44,6 @@ export interface SourceFormProps {
   modalContent?: React.ReactNode
 }
 
-export interface LogViewerProps {
-  logs: Array<{ message: string; type: 'info' | 'error' | 'success' }>;
-}
-
 export interface FloatingLabelInputProps {
   label: string;
   value: string;
@@ -49,10 +51,38 @@ export interface FloatingLabelInputProps {
   placeholder?: string;
   [key: string]: any;
 }
-
 export interface RepositoryModalProps {
   opened: boolean
   onClose: () => void
-  title: string
-  content: React.ReactNode
+  repositories: Repository[]
+  selectedRepos: string[]
+  onSelectionChange: (selected: string[]) => void
+}
+
+export interface RepositoryListProps {
+  repositories: Repository[]
+  selectedRepos: string[]
+  onSelectionChange: (selected: string[]) => void
+}
+
+export interface Repository {
+  value: string
+  label: string
+  description: string
+}
+
+export interface LogViewerProps {
+  progress: number
+  eventLogs: EventLog[]
+}
+
+export type EventLog = { id: string; message: string; timestamp: string }
+
+export interface LambdaWorkModalProps {
+  formData: {
+    version: string
+    installPackages: boolean
+    installType: string
+    selectedRepos: string[]
+  }
 }

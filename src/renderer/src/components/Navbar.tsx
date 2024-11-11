@@ -3,14 +3,7 @@ import NavbarClass from '../style/Navbar.module.css'
 import { Tooltip, UnstyledButton, Stack } from '@mantine/core'
 import { Icon, type IconProps } from '../components/Icon'
 
-import type { NavbarProps } from '../interface'
-
-interface NavbarLinkProps {
-  icon: JSX.Element
-  label: string
-  active?: boolean
-  onClick?(): void
-}
+import type { NavbarProps, NavbarLinkProps } from '@renderer/interface'
 
 function NavbarIcon({ name }: { name: IconProps['name'] }) {
   return <Icon name={name} size={18} strokeWidth={1} />

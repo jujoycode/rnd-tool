@@ -14,7 +14,7 @@ export function SourceManager(): JSX.Element {
     <>
       {!operation && !source && <OperationItemGrid onItemClick={(v) => setOperation(v)} />}
       {operation && !source && <SourceItemGrid onItemClick={(v) => setSource(v)} operation={operation} />}
-      {operation && source && <TargetComponent sourcType={source} operationType={operation} />}
+      {operation && source && <TargetComponent sourcType={source} />}
     </>
   )
 }
@@ -48,7 +48,7 @@ function SourceItemGrid({
   )
 }
 
-function TargetComponent({ sourcType, operationType }: { sourcType: SourceType; operationType: OperationType }) {
+function TargetComponent({ sourcType }: { sourcType: SourceType }) {
   switch (sourcType) {
     case 'lambda': {
       return <Lambda />

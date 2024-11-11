@@ -41,4 +41,10 @@ export class ProjectConstant {
       icon: "FolderSync",
     },
   ] as ActionItem[]
+
+  static LAMBDA_INFO = [
+    { value: 'CalsComWebCommonSelectData', label: 'CalsComWebCommonSelectData', description: '/ComCommonSelect' },
+    { value: 'CalsComWebCommonSaveData', label: 'CalsComWebCommonSaveData', description: '/ComCommonSave' },
+    { value: 'CalsComWebCommonDeleteData', label: 'CalsComWebCommonDeleteData', description: '/ComCommonSave' },
+  ]
 }

@@ -45,7 +45,14 @@ export default function SourceForm(props: SourceFormProps) {
 
   return (
     <>
-      <Modal title="Processing" centered opened={opened} onClose={() => setOpened(false)} closeOnClickOutside={false}>
+      <Modal
+        title="Working Context"
+        size="lg"
+        centered
+        opened={opened}
+        onClose={() => setOpened(false)}
+        closeOnClickOutside={false}
+      >
         {props.modalContent}
       </Modal>
 
