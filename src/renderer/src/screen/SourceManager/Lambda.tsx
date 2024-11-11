@@ -113,7 +113,7 @@ export function Lambda() {
 }
 
 function LambdaWorkModal(props: LambdaWorkModalProps) {
-  const [step, setStep] = useState(1)
+  const [step, setStep] = useState(0)
 
   const [progress, setProgress] = useState(0)
   const [logs, setLogs] = useState<EventLog[]>([])
@@ -129,48 +129,60 @@ function LambdaWorkModal(props: LambdaWorkModalProps) {
     ])
   }
 
-  // 1. 대상 저장소 조회
-  const getTargetRepositories = () => {
-    putLog('Target repositories are being retrieved...')
+  // 1. 사전 작업
+  const preProcess = () => {
+    const perPercent = 10 / props.formData.selectedRepos.length
 
-    setProgress(10)
+    putLog(`Target Count: ${props.formData.selectedRepos.length}`)
+
+    props.formData.selectedRepos.forEach((repo, index) => {
+      putLog(`   ➝ ${index + 1}. ${repo}`)
+
+      setProgress(perPercent * (index + 1))
+    })
+
     setStep(2)
   }
 
-  // 2. 사전 작업
-  const preProcess = () => {
-    putLog('Pre-processing...')
-    setProgress(30)
+  // 2. 저장소 복제 및 패키지 설치
+  const cloneAndInstall = () => {
+    const perPercent = 60 / props.formData.selectedRepos.length
+
+    props.formData.selectedRepos.forEach((repo, index) => {
+      putLog(`${repo} | Cloning repository to local path..`)
+
+      if (props.formData.installPackages) {
+        putLog(`${repo} | Installing dependency..`)
+      }
+
+      putLog(`${repo} | Done`)
+
+      setProgress(perPercent * (index + 1))
+    })
+
     setStep(3)
   }
 
-  // 3. 저장소 복제 및 패키지 설치
-  const cloneAndInstall = () => {
-    putLog('Cloning repositories and installing packages...')
-    setProgress(60)
-    setStep(4)
-  }
-
-  // 4. 후처리
+  // 3. 후처리
   const postProcess = () => {
-    putLog('Post-processing...')
+    putLog('Process Done')
     setProgress(100)
   }
 
   useEffect(() => {
     switch (step) {
       case 1:
-        getTargetRepositories()
-        break
-      case 2:
         preProcess()
         break
-      case 3:
+      case 2:
         cloneAndInstall()
         break
-      case 4:
+      case 3:
         postProcess()
         break
+      default: {
+        setStep(1)
+      }
     }
   }, [step])
 

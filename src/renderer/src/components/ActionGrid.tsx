@@ -21,6 +21,7 @@ const GridItem = memo(
       <UnstyledButton
         className={`${ActionGridClass.item} ${isSelected ? ActionGridClass.selected : ''}`}
         onClick={() => onItemClick(item.value)}
+        disabled={item.disabled}
       >
         <div className={ActionGridClass.iconWrapper}>
           <Icon name={item.icon} size={32} strokeWidth={1.5} />

@@ -24,6 +24,7 @@ export interface ActionItem {
   title: string;
   value: string;
   icon: IconProps["name"];
+  disabled?: boolean
 }
 
 export interface LoaderProps {

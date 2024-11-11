@@ -11,21 +11,25 @@ export class ProjectConstant {
       title: "ECS",
       value: 'ecs',
       icon: "Boxes",
+      disabled: true
     },
     {
       title: "Framework",
       value: 'framework',
       icon: "LibraryBig",
+      disabled: true
     },
     {
       title: "Application",
       value: 'application',
       icon: "AppWindowMac",
+      disabled: true
     },
     {
       title: "Studio",
       value: 'studio',
       icon: "WandSparkles",
+      disabled: true
     },
   ] as ActionItem[]
 
@@ -39,6 +43,7 @@ export class ProjectConstant {
       title: "Update",
       value: 'update',
       icon: "FolderSync",
+      disabled: true
     },
   ] as ActionItem[]
 
