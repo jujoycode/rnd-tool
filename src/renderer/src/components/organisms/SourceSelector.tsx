@@ -1,4 +1,4 @@
-import { ActionGrid } from '@organisms/ActionGrid'
+import { ActionGrid } from '@molecules/ActionGrid'
 
 import { ProjectConstant } from '@renderer/constant'
 

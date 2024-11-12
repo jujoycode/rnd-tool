@@ -1,4 +1,4 @@
-import { ActionGrid } from '@organisms/ActionGrid'
+import { ActionGrid } from '@renderer/components/molecules/ActionGrid'
 import { ProjectConstant } from '@renderer/constant'
 
 import type { OperationType } from '@renderer/interface'

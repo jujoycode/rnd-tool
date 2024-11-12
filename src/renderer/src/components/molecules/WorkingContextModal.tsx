@@ -8,14 +8,7 @@ interface WorkingContextModalProps {
 
 export function WorkingContextModal({ opened, onClose, children }: WorkingContextModalProps) {
   return (
-    <Modal
-      title="Working Context"
-      size="lg"
-      centered
-      opened={opened}
-      onClose={onClose}
-      closeOnClickOutside={false}
-    >
+    <Modal title="Working Context" size="lg" centered opened={opened} onClose={onClose} closeOnClickOutside={false}>
       {children}
     </Modal>
   )
