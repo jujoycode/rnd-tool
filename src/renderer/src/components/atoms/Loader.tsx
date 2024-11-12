@@ -1,7 +1,7 @@
 import LoaderClass from '@renderer/style/Loader.module.css'
 
 import { Center, Stack, Text } from '@mantine/core'
-import { useState, useEffect, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
 
 import type { LoaderProps } from '@renderer/interface'
 

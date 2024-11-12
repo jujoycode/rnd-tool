@@ -1,17 +1,17 @@
-import HomeClass from '../style/Home.module.css'
+import HomeClass from '@renderer/style/Home.module.css'
 
 import { useState } from 'react'
 
-import { Navbar } from '@renderer/components/Navbar'
+import { Navbar } from '@organisms/Navbar'
 
-import { ErrorPage } from '@renderer/screen/ErrorrPage'
-import { SourceManager } from '@renderer/screen/SourceManager/index'
+import { SourceManagerPage } from '@pages/SourceManagePage'
+import { ErrorPage } from '@pages/ErrorrPage'
 
 export function Home(): JSX.Element {
   const [activeMenu, setActiveMenu] = useState(999)
 
   const menuComponents = {
-    3: SourceManager,
+    3: SourceManagerPage,
     default: ErrorPage,
   }
 

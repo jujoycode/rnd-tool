@@ -1,23 +1,10 @@
-import NavbarClass from '../style/Navbar.module.css'
+import NavbarClass from '@renderer/style/Navbar.module.css'
 
-import { Tooltip, UnstyledButton, Stack } from '@mantine/core'
-import { Icon, type IconProps } from '../components/Icon'
+import { Stack } from '@mantine/core'
+import { NavbarIcon } from '@molecules/NavbarIcon'
+import { NavbarLink } from '@molecules/NavbarLink'
 
-import type { NavbarProps, NavbarLinkProps } from '@renderer/interface'
-
-function NavbarIcon({ name }: { name: IconProps['name'] }) {
-  return <Icon name={name} size={18} strokeWidth={1} />
-}
-
-function NavbarLink({ icon, label, active, onClick }: NavbarLinkProps): JSX.Element {
-  return (
-    <Tooltip label={label} position="right" transitionProps={{ duration: 0 }} style={{ fontSize: '10px' }}>
-      <UnstyledButton color="green" onClick={onClick} className={NavbarClass.link} data-active={active || undefined}>
-        {icon}
-      </UnstyledButton>
-    </Tooltip>
-  )
-}
+import type { NavbarProps } from '@renderer/interface'
 
 const navigationData = [
   { icon: <NavbarIcon name="House" />, label: 'Home' },

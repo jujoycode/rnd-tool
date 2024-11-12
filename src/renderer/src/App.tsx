@@ -1,13 +1,13 @@
-import "./style/App.css"
-import "@mantine/core/styles.css"
+import '@renderer/style/App.css'
+import '@mantine/core/styles.css'
 
-import { useState } from "react"
+import { useState } from 'react'
 import { MantineProvider } from "@mantine/core"
 
-import { Home } from "@renderer/screen/Home"
-import { Loader } from "@renderer/components/Loader"
+import { Loader } from '@renderer/components/atoms/Loader'
+import { Home } from '@renderer/components/pages/Home'
 
-import { myTheme } from "./theme"
+import { myTheme } from './theme'
 
 function App(): JSX.Element {
   const [isLoading, setIsLoading] = useState(true)

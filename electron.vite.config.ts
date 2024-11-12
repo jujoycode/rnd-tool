@@ -12,7 +12,12 @@ export default defineConfig({
   renderer: {
     resolve: {
       alias: {
-        '@renderer': resolve('src/renderer/src')
+        '@renderer': resolve('src/renderer/src'),
+        '@atoms': resolve('src/renderer/src/components/atoms'),
+        '@molecules': resolve('src/renderer/src/components/molecules'),
+        '@organisms': resolve('src/renderer/src/components/organisms'),
+        '@templates': resolve('src/renderer/src/components/templates'),
+        '@pages': resolve('src/renderer/src/components/pages')
       }
     },
     plugins: [react()]

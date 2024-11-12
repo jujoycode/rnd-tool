@@ -1,4 +1,4 @@
-import { IconProps } from "@renderer/components/Icon";
+import { IconProps } from "@renderer/components/atoms/Icon";
 
 export interface NavbarProps {
   activeMenu: number;
@@ -79,7 +79,7 @@ export interface LogViewerProps {
 
 export type EventLog = { id: string; message: string; timestamp: string }
 
-export interface LambdaWorkModalProps {
+export interface WorkModalProps {
   formData: {
     version: string
     installPackages: boolean
