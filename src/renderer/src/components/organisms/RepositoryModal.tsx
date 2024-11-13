@@ -4,19 +4,23 @@ import { Drawer, Stack, Text } from '@mantine/core'
 import { SearchInput } from '@atoms/SearchInput'
 import { RepositoryItem } from '@molecules/RepositoryItem'
 
-import type { RepositoryModalProps } from '@renderer/interface'
+import type { RepositoryModalProps } from '@renderer/types'
 
-export function RepositoryModal(props: RepositoryModalProps) {
+export function RepositoryModal({
+  opened,
+  onClose,
+  repositories,
+  selectedRepos,
+  onSelectionChange,
+}: RepositoryModalProps) {
   const [searchQuery, setSearchQuery] = useState('')
 
-  const filteredRepos = props.repositories.filter((repo) =>
-    repo.label.toLowerCase().includes(searchQuery.toLowerCase()),
-  )
+  const filteredRepos = repositories.filter((repo) => repo.label.toLowerCase().includes(searchQuery.toLowerCase()))
 
   return (
     <Drawer
-      opened={props.opened}
-      onClose={props.onClose}
+      opened={opened}
+      onClose={onClose}
       position="right"
       size="sm"
       title={
@@ -32,10 +36,10 @@ export function RepositoryModal(props: RepositoryModalProps) {
           <RepositoryItem
             key={repo.value}
             repo={repo}
-            isSelected={props.selectedRepos.includes(repo.value)}
+            isSelected={selectedRepos.includes(repo.value)}
             onSelect={(checked) =>
-              props.onSelectionChange(
-                checked ? [...props.selectedRepos, repo.value] : props.selectedRepos.filter((r) => r !== repo.value),
+              onSelectionChange(
+                checked ? [...selectedRepos, repo.value] : selectedRepos.filter((r) => r !== repo.value),
               )
             }
           />

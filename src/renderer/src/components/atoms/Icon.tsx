@@ -1,11 +1,9 @@
-import { icons, LucideProps } from "lucide-react"
+import { icons } from 'lucide-react'
 
-export interface IconProps extends LucideProps {
-  name: keyof typeof icons
-}
+import type { IconProps } from '@renderer/types'
 
 export const Icon = ({ name, ...props }: IconProps) => {
   const LucideIcon = icons[name]
 
-  return <LucideIcon style={{ cursor: "pointer" }} {...props} />
+  return <LucideIcon style={{ cursor: 'pointer' }} {...props} />
 }

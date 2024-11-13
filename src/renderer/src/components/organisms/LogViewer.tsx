@@ -5,7 +5,7 @@ import { LogItem } from '@atoms/LogItem'
 import { LogHeader } from '@molecules/LogHeader'
 import { ProgressIndicator } from '@molecules/ProgressIndicator'
 
-import type { LogViewerProps } from '@renderer/interface'
+import type { LogViewerProps } from '@renderer/types'
 
 export function LogViewer(props: LogViewerProps) {
   const [opened, setOpened] = useState(true)

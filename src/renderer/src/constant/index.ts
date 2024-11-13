@@ -1,4 +1,4 @@
-import type { ActionItem } from "@renderer/interface"
+import type { ActionItem } from "@renderer/types"
 
 export class ProjectConstant {
   /**
@@ -121,7 +121,7 @@ export class ProjectConstant {
     // ConsoleMeta_Checkin
     { value: 'CalsConsoleWebCheckinRequest', label: 'CalsConsoleWebCheckinRequest', description: '/ConsoleMeta_Checkin' },
     { value: 'CalsConsoleWebMetaGenerate', label: 'CalsConsoleWebMetaGenerate', description: '/ConsoleMeta_Checkin' },
-    
+
     // ConsolePublish
     { value: 'CalsConsoleWebConfigPublish', label: 'CalsConsoleWebConfigPublish', description: '/ConsolePublish' },
 

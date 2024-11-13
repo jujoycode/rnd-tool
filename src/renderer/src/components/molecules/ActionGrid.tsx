@@ -5,33 +5,33 @@ import { Text, Card, SimpleGrid, Stack } from '@mantine/core'
 
 import { ActionButton } from '@atoms/ActionButton'
 
-import type { ActionGridProps } from '@renderer/interface'
+import type { ActionGridProps } from '@renderer/types'
 
-export const ActionGrid = memo((props: ActionGridProps) => {
+export const ActionGrid = memo(({ title, description, ActionItems, ItemGrid, onItemClick }: ActionGridProps) => {
   const [selectedItem, setSelectedItem] = useState<string | null>(null)
 
   const handleItemClick = useCallback(
     (value: string) => {
       setSelectedItem(value)
-      props.onItemClick?.(value)
+      onItemClick?.(value)
     },
-    [props.onItemClick],
+    [onItemClick],
   )
 
   return (
     <Card withBorder radius="lg" className={ActionGridClass.card} p="xl">
       <Stack mb={10} gap={4}>
         <Text size="lg" fw={600} className={ActionGridClass.title}>
-          {props.title}
+          {title}
         </Text>
-        {props.description && (
+        {description && (
           <Text size="xs" fw={300} c="themeColor.3">
-            {props.description}
+            {description}
           </Text>
         )}
       </Stack>
-      <SimpleGrid cols={props.ItemGrid ?? 3} mt="md" spacing="xl">
-        {props.ActionItems.map((item) => (
+      <SimpleGrid cols={ItemGrid ?? 3} mt="md" spacing="xl">
+        {ActionItems.map((item) => (
           <ActionButton
             key={item.title}
             item={item}

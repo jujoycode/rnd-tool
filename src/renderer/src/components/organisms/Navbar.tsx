@@ -4,7 +4,7 @@ import { Stack } from '@mantine/core'
 import { NavbarIcon } from '@molecules/NavbarIcon'
 import { NavbarLink } from '@molecules/NavbarLink'
 
-import type { NavbarProps } from '@renderer/interface'
+import type { NavbarProps } from '@renderer/types'
 
 const navigationData = [
   { icon: <NavbarIcon name="House" />, label: 'Home' },
@@ -17,14 +17,9 @@ const navigationData = [
   { icon: <NavbarIcon name="User" />, label: 'User Pool' },
 ]
 
-export function Navbar(props: NavbarProps): JSX.Element {
+export function Navbar({ activeMenu, setActiveMenu }: NavbarProps): JSX.Element {
   const links = navigationData.map((link, index) => (
-    <NavbarLink
-      {...link}
-      key={link.label}
-      active={index === props.activeMenu}
-      onClick={() => props.setActiveMenu(index)}
-    />
+    <NavbarLink {...link} key={link.label} active={index === activeMenu} onClick={() => setActiveMenu(index)} />
   ))
 
   return (

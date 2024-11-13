@@ -4,9 +4,9 @@ import { LogViewer } from '@organisms/LogViewer'
 
 import { ProjectUtil } from '@renderer/util'
 
-import type { EventLog, WorkModalProps } from '@renderer/interface'
+import type { EventLog, WorkModalProps } from '@renderer/types'
 
-export function WorkModal(props: WorkModalProps) {
+export function WorkModal({ formData }: WorkModalProps) {
   const [progress, setProgress] = useState(0)
   const [logs, setLogs] = useState<EventLog[]>([])
 

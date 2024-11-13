@@ -2,7 +2,7 @@ import { ActionGrid } from '@molecules/ActionGrid'
 
 import { ProjectConstant } from '@renderer/constant'
 
-import type { OperationType, SourceType } from '@renderer/interface'
+import type { OperationType, SourceType } from '@renderer/types'
 
 export function SourceSelector({
   onSelect,

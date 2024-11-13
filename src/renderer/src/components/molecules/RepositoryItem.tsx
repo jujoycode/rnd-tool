@@ -1,12 +1,6 @@
 import { Group, Stack, Text, Checkbox } from '@mantine/core'
 
-import type { Repository } from '@renderer/interface'
-
-interface RepositoryItemProps {
-  repo: Repository
-  isSelected: boolean
-  onSelect: (checked: boolean) => void
-}
+import { RepositoryItemProps } from '@renderer/types'
 
 export function RepositoryItem({ repo, isSelected, onSelect }: RepositoryItemProps) {
   return (

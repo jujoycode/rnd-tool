@@ -4,18 +4,13 @@ import { useForm } from '@mantine/form'
 import { SourceDownloadTemplate } from '@templates/SourceDownloadTemplate'
 
 import { ProjectConstant } from '@renderer/constant'
-import { LambdaDownloadForm } from '@molecules/LambdaDownloadForm'
 
-interface FormValues {
-  version: string
-  installPackages: boolean
-  installType: string
-  selectedRepos: string[]
-}
+import { LambdaDownloadForm } from '@molecules/LambdaDownloadForm'
+import type { LambdaDownloadFormData } from '@renderer/types'
 
 export function Lambda() {
   const [drawerOpened, setDrawerOpened] = useState(false)
-  const form = useForm<FormValues>({
+  const form = useForm<LambdaDownloadFormData>({
     initialValues: {
       version: 'v2',
       installPackages: false,
@@ -31,7 +26,6 @@ export function Lambda() {
     <SourceDownloadTemplate
       form={form}
       drawerOpened={drawerOpened}
-      onDrawerOpen={() => setDrawerOpened(true)}
       onDrawerClose={() => setDrawerOpened(false)}
       onSubmit={handleSubmit}
       onClear={handleClear}

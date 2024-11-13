@@ -1,6 +1,6 @@
 import { SegmentedControl, type SegmentedControlProps } from '@mantine/core'
 
-export function FormSegmentedControl(props: SegmentedControlProps) {
+export function FormSegmentedControl({ onChange, ...props }: SegmentedControlProps) {
   return (
     <SegmentedControl
       w={150}
@@ -8,7 +8,7 @@ export function FormSegmentedControl(props: SegmentedControlProps) {
       radius="md"
       {...props}
       onChange={(value) => {
-        props.onChange?.(value)
+        onChange?.(value)
       }}
     />
   )

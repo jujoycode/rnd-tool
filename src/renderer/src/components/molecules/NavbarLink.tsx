@@ -2,7 +2,7 @@ import NavbarLinkClass from '@renderer/style/Navbar.module.css'
 
 import { Tooltip, UnstyledButton } from '@mantine/core'
 
-import type { NavbarLinkProps } from '@renderer/interface'
+import type { NavbarLinkProps } from '@renderer/types'
 
 export function NavbarLink({ icon, label, active, onClick }: NavbarLinkProps): JSX.Element {
   return (

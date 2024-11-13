@@ -6,20 +6,20 @@ import { Container } from '@mantine/core'
 import { WorkingContextModal } from '@molecules/WorkingContextModal'
 import { SourceFormContent } from '@molecules/SourceFormContent'
 
-import type { SourceFormProps } from '@renderer/interface'
+import type { SourceFormProps } from '@renderer/types'
 
-export function SourceForm(props: SourceFormProps) {
+export function SourceForm({ onClear, onSubmit, modalCondition, modalContent, title, children }: SourceFormProps) {
   const [path, setPath] = useState('')
   const [opened, setOpened] = useState(false)
 
   const handleClear = () => {
     setPath('')
-    props.onClear()
+    onClear?.()
   }
 
   const handleSubmit = () => {
-    props.onSubmit?.()
-    if (props.modalCondition) {
+    onSubmit?.()
+    if (modalCondition) {
       setOpened(true)
     }
   }
@@ -27,19 +27,19 @@ export function SourceForm(props: SourceFormProps) {
   return (
     <>
       <WorkingContextModal opened={opened} onClose={() => setOpened(false)}>
-        {props.modalContent}
+        {modalContent}
       </WorkingContextModal>
 
       <Container fluid className={SourceFormClass.container}>
         <SourceFormContent
-          title={props.title}
+          title={title}
           path={path}
           onPathChange={setPath}
           onClear={handleClear}
           onSubmit={handleSubmit}
-          isSubmitDisabled={path === '' || !props.modalCondition}
+          isSubmitDisabled={path === '' || !modalCondition}
         >
-          {props.children}
+          {children}
         </SourceFormContent>
       </Container>
     </>

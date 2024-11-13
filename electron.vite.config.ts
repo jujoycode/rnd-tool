@@ -17,7 +17,7 @@ export default defineConfig({
         '@molecules': resolve('src/renderer/src/components/molecules'),
         '@organisms': resolve('src/renderer/src/components/organisms'),
         '@templates': resolve('src/renderer/src/components/templates'),
-        '@pages': resolve('src/renderer/src/components/pages')
+        '@pages': resolve('src/renderer/src/components/pages'),
       }
     },
     plugins: [react()]

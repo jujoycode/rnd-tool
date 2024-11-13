@@ -1,7 +1,7 @@
 import { ActionGrid } from '@renderer/components/molecules/ActionGrid'
 import { ProjectConstant } from '@renderer/constant'
 
-import type { OperationType } from '@renderer/interface'
+import type { OperationType } from '@renderer/types'
 
 interface OperationSelectorProps {
   onSelect: (value: OperationType) => void

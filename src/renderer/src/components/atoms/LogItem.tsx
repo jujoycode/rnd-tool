@@ -1,10 +1,6 @@
 import { Box, Text } from '@mantine/core'
 
-import type { EventLog } from '@renderer/interface'
-
-interface LogItemProps {
-  log: EventLog
-}
+import type { LogItemProps } from '@renderer/types'
 
 export function LogItem({ log }: LogItemProps) {
   return (

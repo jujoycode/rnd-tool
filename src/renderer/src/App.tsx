@@ -2,7 +2,7 @@ import '@renderer/style/App.css'
 import '@mantine/core/styles.css'
 
 import { useState } from 'react'
-import { MantineProvider } from "@mantine/core"
+import { MantineProvider } from '@mantine/core'
 
 import { Loader } from '@renderer/components/atoms/Loader'
 import { Home } from '@renderer/components/pages/Home'
@@ -14,7 +14,7 @@ function App(): JSX.Element {
 
   return (
     <MantineProvider theme={myTheme}>
-      {isLoading ? <Loader title="Initializing..." isLoading={isLoading} setIsLoading={setIsLoading} /> : <Home />}
+      {isLoading ? <Loader title="Initializing..." setIsLoading={setIsLoading} /> : <Home />}
     </MantineProvider>
   )
 }

@@ -3,9 +3,9 @@ import LoaderClass from '@renderer/style/Loader.module.css'
 import { Center, Stack, Text } from '@mantine/core'
 import { useEffect, useRef, useState } from 'react'
 
-import type { LoaderProps } from '@renderer/interface'
+import type { LoaderProps } from '@renderer/types'
 
-export function Loader(props: LoaderProps): JSX.Element {
+export function Loader({ title, setIsLoading }: LoaderProps): JSX.Element {
   const [loadingProgress, setLoadingProgress] = useState(0)
 
   const progressRef = useRef<number>(0)
@@ -25,7 +25,7 @@ export function Loader(props: LoaderProps): JSX.Element {
       if (progress < 100) {
         rafRef.current = requestAnimationFrame(animate)
       } else {
-        props.setIsLoading(false)
+        setIsLoading(false)
       }
     }
 
@@ -36,7 +36,7 @@ export function Loader(props: LoaderProps): JSX.Element {
         cancelAnimationFrame(rafRef.current)
       }
     }
-  }, [props.setIsLoading])
+  }, [setIsLoading])
 
   return (
     <div>
@@ -46,7 +46,7 @@ export function Loader(props: LoaderProps): JSX.Element {
             <div className={LoaderClass.loadingBar} style={{ width: `${loadingProgress}%` }} />
           </div>
           <Text size="xs" mt={7} fw={500} className={LoaderClass.title}>
-            {props.title}
+            {title}
           </Text>
         </Stack>
       </Center>

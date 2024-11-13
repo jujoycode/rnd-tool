@@ -3,12 +3,12 @@ import ActionGridClass from '@renderer/style/ActionGrid.module.css'
 import { UnstyledButton, Text } from '@mantine/core'
 import { Icon } from '@renderer/components/atoms/Icon'
 
-import type { Atoms } from '@renderer/interface'
+import type { ActionButtonProps } from '@renderer/types'
 
-export const ActionButton = ({ item, isSelected, onItemClick }: Atoms.ActionButtonProps) => (
+export const ActionButton = ({ item, isSelected, onItemClick }: ActionButtonProps) => (
   <UnstyledButton
     className={`${ActionGridClass.item} ${isSelected ? ActionGridClass.selected : ''}`}
-    onClick={() => onItemClick(item.value)}
+    onClick={() => onItemClick?.(item.value)}
     disabled={item.disabled}
   >
     <div className={ActionGridClass.iconWrapper}>

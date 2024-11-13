@@ -1,8 +1,6 @@
 import { Group, Text, Progress, Paper } from '@mantine/core'
 
-interface ProgressIndicatorProps {
-  progress: number
-}
+import type { ProgressIndicatorProps } from '@renderer/types'
 
 export function ProgressIndicator({ progress }: ProgressIndicatorProps) {
   return (

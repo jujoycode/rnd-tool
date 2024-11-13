@@ -5,7 +5,7 @@ import { SourceSelector } from '@organisms/SourceSelector'
 import { Lambda } from '@pages/Lambda'
 import { ErrorPage } from '@pages/ErrorrPage'
 
-import type { OperationType, SourceType } from '@renderer/interface'
+import type { OperationType, SourceType } from '@renderer/types'
 
 export function SourceManagePage() {
   const [operation, setOperation] = useState<OperationType>()

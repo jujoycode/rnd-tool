@@ -4,15 +4,15 @@ import { useState } from 'react'
 
 import { TextInput } from '@mantine/core'
 
-import type { FloatingLabelInputProps } from '@renderer/interface'
+import type { FloatingLabelInputProps } from '@renderer/types'
 
-export function FloatingLabelInput(props: FloatingLabelInputProps) {
+export function FloatingLabelInput({ value, placeholder, ...props }: FloatingLabelInputProps) {
   const [focused, setFocused] = useState(false)
-  const floating = props.value.trim().length !== 0 || focused || undefined
+  const floating = (value?.trim().length ?? 0) !== 0 || focused || undefined
 
   return (
     <TextInput
-      placeholder={props.placeholder}
+      placeholder={placeholder}
       required
       classNames={FloatingLabelClass}
       onFocus={() => setFocused(true)}

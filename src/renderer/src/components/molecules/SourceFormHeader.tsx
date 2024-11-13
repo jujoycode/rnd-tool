@@ -1,9 +1,6 @@
 import { Group, Title, Text, Button } from '@mantine/core'
 
-interface SourceFormHeaderProps {
-  title: string
-  onClear: () => void
-}
+import type { SourceFormHeaderProps } from '@renderer/types'
 
 export function SourceFormHeader({ title, onClear }: SourceFormHeaderProps) {
   return (

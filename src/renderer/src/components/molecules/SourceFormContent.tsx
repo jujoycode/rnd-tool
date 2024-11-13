@@ -5,16 +5,7 @@ import { Button, Card } from '@mantine/core'
 import { FloatingLabelInput } from '@atoms/FloatingLabelInput'
 import { PathSearchButton } from '@molecules/PathSearchButton'
 import { SourceFormHeader } from '@molecules/SourceFormHeader'
-
-interface SourceFormContentProps {
-  title: string
-  path: string
-  onPathChange: (value: string) => void
-  onClear: () => void
-  onSubmit: () => void
-  isSubmitDisabled: boolean
-  children: React.ReactNode
-}
+import { SourceFormContentProps } from '@renderer/types'
 
 export function SourceFormContent({
   title,
@@ -36,7 +27,7 @@ export function SourceFormContent({
           label="Root Path"
           placeholder="Enter root path"
           value={path}
-          onChange={(event) => onPathChange(event.currentTarget.value)}
+          onChange={(event) => onPathChange?.(event.currentTarget.value)}
           rightSection={<PathSearchButton setPath={onPathChange} />}
         />
 

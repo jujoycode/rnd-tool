@@ -1,9 +1,6 @@
 import { Group, Text } from '@mantine/core'
 
-interface FormRowProps {
-  label: string
-  children: React.ReactNode
-}
+import type { FormRowProps } from '@renderer/types'
 
 export function FormRow({ label, children }: FormRowProps) {
   return (
