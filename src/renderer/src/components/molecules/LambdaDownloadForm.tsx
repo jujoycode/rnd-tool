@@ -1,10 +1,10 @@
 import { Stack, Switch, SegmentedControl, Button } from '@mantine/core'
+import { type UseFormReturnType } from '@mantine/form'
 import { FormRow } from '@atoms/FormRow'
-import { UseFormReturnType } from '@mantine/form'
 
 import { ProjectConstant } from '@renderer/constant'
 
-interface LambdaFormProps {
+interface LambdaDownloadFormProps {
   form: UseFormReturnType<{
     version: string
     installPackages: boolean
@@ -20,7 +20,7 @@ const SEGMENTED_CONTROL_PROPS = {
   radius: 'md' as const,
 }
 
-export function LambdaForm({ form, onOpenDrawer }: LambdaFormProps) {
+export function LambdaDownloadForm({ form, onOpenDrawer }: LambdaDownloadFormProps) {
   return (
     <Stack gap="md">
       <FormRow label="Version">

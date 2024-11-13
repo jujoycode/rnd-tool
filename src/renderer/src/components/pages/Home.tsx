@@ -4,14 +4,14 @@ import { useState } from 'react'
 
 import { Navbar } from '@organisms/Navbar'
 
-import { SourceManagerPage } from '@pages/SourceManagePage'
+import { SourceManagePage } from '@pages/SourceManagePage'
 import { ErrorPage } from '@pages/ErrorrPage'
 
 export function Home(): JSX.Element {
   const [activeMenu, setActiveMenu] = useState(999)
 
   const menuComponents = {
-    3: SourceManagerPage,
+    3: SourceManagePage,
     default: ErrorPage,
   }
 

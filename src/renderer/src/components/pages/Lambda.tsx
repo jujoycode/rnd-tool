@@ -4,7 +4,7 @@ import { useForm } from '@mantine/form'
 import { SourceDownloadTemplate } from '@templates/SourceDownloadTemplate'
 
 import { ProjectConstant } from '@renderer/constant'
-import { LambdaForm } from '../molecules/LambdaForm'
+import { LambdaDownloadForm } from '@molecules/LambdaDownloadForm'
 
 interface FormValues {
   version: string
@@ -37,7 +37,7 @@ export function Lambda() {
       onClear={handleClear}
       repositories={ProjectConstant.LAMBDA_INFO}
     >
-      <LambdaForm form={form} onOpenDrawer={() => setDrawerOpened(true)} />
+      <LambdaDownloadForm form={form} onOpenDrawer={() => setDrawerOpened(true)} />
     </SourceDownloadTemplate>
   )
 }

@@ -7,7 +7,7 @@ import { ErrorPage } from '@pages/ErrorrPage'
 
 import type { OperationType, SourceType } from '@renderer/interface'
 
-export function SourceManagerPage() {
+export function SourceManagePage() {
   const [operation, setOperation] = useState<OperationType>()
   const [source, setSource] = useState<SourceType>()
 

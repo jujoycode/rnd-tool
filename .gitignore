@@ -1,3 +1,4 @@
 out
 node_modules
 pnpm-lock.yamls
+.DS_Store

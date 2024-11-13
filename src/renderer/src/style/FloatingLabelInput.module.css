@@ -46,3 +46,8 @@
     }
   }
 }
+
+.input:focus {
+  outline: 2px solid var(--mantine-color-themeColor-6);
+  outline-offset: -2px;
+}
