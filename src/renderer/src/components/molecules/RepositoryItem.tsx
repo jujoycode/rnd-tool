@@ -1,6 +1,6 @@
 import { Group, Stack, Text, Checkbox } from '@mantine/core'
 
-import { RepositoryItemProps } from '@renderer/types'
+import type { RepositoryItemProps } from '@renderer/types'
 
 export function RepositoryItem({ repo, isSelected, onSelect }: RepositoryItemProps) {
   return (

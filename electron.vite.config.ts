@@ -18,6 +18,8 @@ export default defineConfig({
         '@organisms': resolve('src/renderer/src/components/organisms'),
         '@templates': resolve('src/renderer/src/components/templates'),
         '@pages': resolve('src/renderer/src/components/pages'),
+        '@hooks': resolve('src/renderer/src/hooks'),
+        '@stores': resolve('src/renderer/src/hooks/stores')
       }
     },
     plugins: [react()]

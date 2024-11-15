@@ -5,7 +5,7 @@ import { Button, Card } from '@mantine/core'
 import { FloatingLabelInput } from '@atoms/FloatingLabelInput'
 import { PathSearchButton } from '@molecules/PathSearchButton'
 import { SourceFormHeader } from '@molecules/SourceFormHeader'
-import { SourceFormContentProps } from '@renderer/types'
+import type { SourceFormContentProps } from '@renderer/types'
 
 export function SourceFormContent({
   title,

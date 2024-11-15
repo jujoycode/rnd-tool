@@ -1,13 +1,10 @@
-import type { LambdaDownloadFormData } from "./molecules"
+import type { EventLog } from "../features/source"
+import type { OperationType } from "../features/source"
+import type { Repository } from "../features/repository"
 
 interface LogViewerProps {
   progress: number
   eventLogs: EventLog[]
-}
-
-interface NavbarProps {
-  activeMenu: number
-  setActiveMenu: (menuIndex: number) => void
 }
 
 interface OperationSelectorProps {

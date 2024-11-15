@@ -4,15 +4,15 @@ import { useState } from 'react'
 import { LogItem } from '@atoms/LogItem'
 import { LogHeader } from '@molecules/LogHeader'
 import { ProgressIndicator } from '@molecules/ProgressIndicator'
+import { useWorkStore } from '@renderer/hooks/stores/workStore'
 
-import type { LogViewerProps } from '@renderer/types'
-
-export function LogViewer(props: LogViewerProps) {
+export function LogViewer() {
+  const { progress, eventLogs } = useWorkStore()
   const [opened, setOpened] = useState(true)
 
   return (
     <Box>
-      <ProgressIndicator progress={props.progress} />
+      <ProgressIndicator progress={progress} />
 
       <Paper withBorder>
         <LogHeader opened={opened} onToggle={() => setOpened((o) => !o)} />
@@ -20,7 +20,7 @@ export function LogViewer(props: LogViewerProps) {
         <Collapse in={opened}>
           <Code block bg="dark.6" style={{ fontFamily: 'Monaco, monospace' }}>
             <ScrollArea h={300} p="xs">
-              {props.eventLogs.map((log) => (
+              {eventLogs.map((log) => (
                 <LogItem key={log.id} log={log} />
               ))}
             </ScrollArea>

@@ -1,15 +1,29 @@
-import { useState } from 'react'
+import { useSourceStore } from '@stores/sourceStore'
+import { useBackKey } from '@hooks/common/useBackKey'
 
 import { OperationSelector } from '@organisms/OperationSelector'
 import { SourceSelector } from '@organisms/SourceSelector'
 import { Lambda } from '@pages/Lambda'
 import { ErrorPage } from '@pages/ErrorrPage'
 
-import type { OperationType, SourceType } from '@renderer/types'
+import type { SourceType } from '@renderer/types'
 
 export function SourceManagePage() {
-  const [operation, setOperation] = useState<OperationType>()
-  const [source, setSource] = useState<SourceType>()
+  const { operation, source, setOperation, setSource } = useSourceStore()
+
+  const handleBack = () => {
+    if (source) {
+      setSource(null)
+      return
+    }
+
+    if (operation) {
+      setOperation(null)
+      return
+    }
+  }
+
+  useBackKey({ onBack: handleBack })
 
   const renderSourceComponent = (sourceType: SourceType) => {
     switch (sourceType) {
@@ -26,8 +40,8 @@ export function SourceManagePage() {
 
   return (
     <>
-      {!operation && !source && <OperationSelector onSelect={setOperation} />}
-      {operation && !source && <SourceSelector onSelect={setSource} operation={operation} />}
+      {!operation && !source && <OperationSelector />}
+      {operation && !source && <SourceSelector />}
       {operation && source && renderSourceComponent(source)}
     </>
   )

@@ -2,7 +2,7 @@ import { Stack, Switch, SegmentedControl, Button } from '@mantine/core'
 import { FormRow } from '@atoms/FormRow'
 
 import { ProjectConstant } from '@renderer/constant'
-import { LambdaDownloadFormProps } from '@renderer/types'
+import type { LambdaDownloadFormProps } from '@renderer/types'
 
 const SEGMENTED_CONTROL_PROPS = {
   w: 150,

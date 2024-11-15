@@ -2,7 +2,7 @@ import { Text, Group, UnstyledButton } from '@mantine/core'
 
 import { Icon } from '@atoms/Icon'
 
-import { LogHeaderProps } from '@renderer/types'
+import type { LogHeaderProps } from '@renderer/types'
 
 export function LogHeader({ opened, onToggle }: LogHeaderProps) {
   return (

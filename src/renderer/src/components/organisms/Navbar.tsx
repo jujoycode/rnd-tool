@@ -1,10 +1,9 @@
 import NavbarClass from '@renderer/style/Navbar.module.css'
+import { useGlobalStore } from '@renderer/hooks/stores/globalStore'
 
 import { Stack } from '@mantine/core'
 import { NavbarIcon } from '@molecules/NavbarIcon'
 import { NavbarLink } from '@molecules/NavbarLink'
-
-import type { NavbarProps } from '@renderer/types'
 
 const navigationData = [
   { icon: <NavbarIcon name="House" />, label: 'Home' },
@@ -12,14 +11,17 @@ const navigationData = [
   { icon: <NavbarIcon name="Package" />, label: 'Resource' },
   { icon: <NavbarIcon name="Gitlab" />, label: 'Source Manager' },
   { icon: <NavbarIcon name="CalendarDays" />, label: 'Calendar' },
+  { icon: <NavbarIcon name="Bug" />, label: 'Issue' },
   { icon: <NavbarIcon name="TestTubeDiagonal" />, label: 'Test' },
   { icon: <NavbarIcon name="Hammer" />, label: 'Utility' },
   { icon: <NavbarIcon name="User" />, label: 'User Pool' },
 ]
 
-export function Navbar({ activeMenu, setActiveMenu }: NavbarProps): JSX.Element {
+export function Navbar(): JSX.Element {
+  const { menuIndex, setMenuIndex } = useGlobalStore()
+
   const links = navigationData.map((link, index) => (
-    <NavbarLink {...link} key={link.label} active={index === activeMenu} onClick={() => setActiveMenu(index)} />
+    <NavbarLink {...link} key={link.label} active={index === menuIndex} onClick={() => setMenuIndex(index)} />
   ))
 
   return (

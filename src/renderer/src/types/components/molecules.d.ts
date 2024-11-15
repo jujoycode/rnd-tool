@@ -6,6 +6,7 @@ interface ActionGridProps {
   description?: string
   ActionItems: ActionItem[]
   ItemGrid?: number
+  onBack?: () => void
   onItemClick?: (itemValue: string) => void
 }
 

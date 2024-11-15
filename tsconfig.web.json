@@ -12,7 +12,9 @@
       "@molecules/*": ["src/renderer/src/components/molecules/*"],
       "@organisms/*": ["src/renderer/src/components/organisms/*"],
       "@templates/*": ["src/renderer/src/components/templates/*"],
-      "@pages/*": ["src/renderer/src/components/pages/*"]
+      "@pages/*": ["src/renderer/src/components/pages/*"],
+      "@hooks/*": ["src/renderer/src/hooks/*"],
+      "@stores/*": ["src/renderer/src/hooks/stores/*"]
     }
   }
 }

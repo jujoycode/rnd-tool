@@ -1,12 +1,16 @@
-import type { BaseProps } from '../common/base';
+import type { BaseProps } from '../common/base'
 import type { icons, LucideProps } from 'lucide-react'
 import type { TextInputProps } from '@mantine/core'
 
 interface ActionItem {
-  title: string;
-  value: string;
-  icon: IconProps["name"];
+  title: string
+  value: string
+  icon: IconProps['name']
   disabled?: boolean
+}
+
+interface BackButtonProps {
+  onBack?: () => void
 }
 
 interface ActionButtonProps {
@@ -16,10 +20,10 @@ interface ActionButtonProps {
 }
 
 interface FloatingLabelInputProps extends TextInputProps {
-  label: string;
-  value?: string;
-  placeholder?: string;
-  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  label: string
+  value?: string
+  placeholder?: string
+  onChange?: (event: React.ChangeEvent<HTMLInputElement>) => void
 }
 
 interface FormRowProps {
@@ -32,8 +36,8 @@ interface IconProps extends LucideProps {
 }
 
 interface LoaderProps {
-  title: string;
-  setIsLoading: (isLoading: boolean) => void;
+  title: string
+  setIsLoading: (isLoading: boolean) => void
 }
 
 interface LogItemProps {
@@ -45,4 +49,14 @@ interface SearchInputProps {
   onChange?: (value: string) => void
 }
 
-export type { ActionItem, ActionButtonProps, FloatingLabelInputProps, FormRowProps, IconProps, LoaderProps, LogItemProps, SearchInputProps }
+export type {
+  ActionItem,
+  ActionButtonProps,
+  BackButtonProps,
+  FloatingLabelInputProps,
+  FormRowProps,
+  IconProps,
+  LoaderProps,
+  LogItemProps,
+  SearchInputProps,
+}

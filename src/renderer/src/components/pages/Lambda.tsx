@@ -1,26 +1,32 @@
 import { useState } from 'react'
 import { useForm } from '@mantine/form'
 
-import { SourceDownloadTemplate } from '@templates/SourceDownloadTemplate'
-
+import { useSourceStore } from '@renderer/hooks/stores/sourceStore'
 import { ProjectConstant } from '@renderer/constant'
 
+import { SourceDownloadTemplate } from '@templates/SourceDownloadTemplate'
 import { LambdaDownloadForm } from '@molecules/LambdaDownloadForm'
+
 import type { LambdaDownloadFormData } from '@renderer/types'
 
 export function Lambda() {
+  const { sourceConfig, updateSourceConfig, setOperation, setSource } = useSourceStore()
   const [drawerOpened, setDrawerOpened] = useState(false)
   const form = useForm<LambdaDownloadFormData>({
-    initialValues: {
-      version: 'v2',
-      installPackages: false,
-      installType: 'all',
-      selectedRepos: [],
-    },
+    initialValues: sourceConfig.lambda as LambdaDownloadFormData,
   })
 
-  const handleSubmit = () => {}
-  const handleClear = () => form.reset()
+  const handleSubmit = () => {
+    const values = form.values
+    updateSourceConfig('lambda', values)
+    setOperation('download')
+    setSource('lambda')
+  }
+
+  const handleClear = () => {
+    form.reset()
+    updateSourceConfig('lambda', sourceConfig.lambda)
+  }
 
   return (
     <SourceDownloadTemplate

@@ -1,20 +1,20 @@
-import { ActionGrid } from '@renderer/components/molecules/ActionGrid'
+import { useSourceStore } from '@renderer/hooks/stores/sourceStore'
+
+import { ActionGrid } from '@molecules/ActionGrid'
 import { ProjectConstant } from '@renderer/constant'
 
 import type { OperationType } from '@renderer/types'
 
-interface OperationSelectorProps {
-  onSelect: (value: OperationType) => void
-}
+export function OperationSelector() {
+  const { setOperation } = useSourceStore()
 
-export function OperationSelector({ onSelect }: OperationSelectorProps) {
   return (
     <ActionGrid
       title="Operation"
       description="What would you like to do with your source?"
       ActionItems={ProjectConstant.OPERATION_CATEGORY}
       ItemGrid={2}
-      onItemClick={(v) => onSelect(v as OperationType)}
+      onItemClick={(v) => setOperation(v as OperationType)}
     />
   )
 }
