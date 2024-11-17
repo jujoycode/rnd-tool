@@ -9,6 +9,12 @@ interface ActionItem {
   disabled?: boolean
 }
 
+interface BoxButton {
+  title: string
+  value: string
+  iconName: IconProps['name']
+}
+
 interface BackButtonProps {
   onBack?: () => void
 }
@@ -33,6 +39,7 @@ interface FormRowProps {
 
 interface IconProps extends LucideProps {
   name: keyof typeof icons
+  isCursor?: boolean
 }
 
 interface LoaderProps {
@@ -51,6 +58,7 @@ interface SearchInputProps {
 
 export type {
   ActionItem,
+  BoxButton,
   ActionButtonProps,
   BackButtonProps,
   FloatingLabelInputProps,

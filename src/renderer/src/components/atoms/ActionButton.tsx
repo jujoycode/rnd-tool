@@ -1,7 +1,7 @@
 import ActionGridClass from '@renderer/style/ActionGrid.module.css'
 
 import { UnstyledButton, Text } from '@mantine/core'
-import { Icon } from '@renderer/components/atoms/Icon'
+import { Icon } from '@atoms/Icon'
 
 import type { ActionButtonProps } from '@renderer/types'
 

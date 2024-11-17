@@ -1,6 +1,9 @@
 import HomeClass from '@renderer/style/Home.module.css'
 
 import { useGlobalStore } from '@stores/globalStore'
+
+import { Stack } from '@mantine/core'
+
 import { SourceManagePage } from '@pages/SourceManagePage'
 import { ErrorPage } from '@pages/ErrorrPage'
 import { Navbar } from '@organisms/Navbar'
@@ -30,7 +33,10 @@ export function Home(): JSX.Element {
 function HomePage(): JSX.Element {
   return (
     <>
-      <BoxButton />
+      <Stack>
+        <BoxButton title="등록된 일정" value="1건" iconName="Calendar" />
+        <BoxButton title="미해결 이슈" value="3건" iconName="Bug" />
+      </Stack>
     </>
   )
 }
