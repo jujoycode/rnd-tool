@@ -1,9 +1,16 @@
 import ErrorClass from '@styles/ErrorPage.module.css'
-import { Text, Button, Container, Group } from '@mantine/core'
+import { useNavigate } from 'react-router-dom'
 import { useGlobalStore } from '@hooks/stores/GlobalStore'
+import { Text, Button, Container, Group } from '@mantine/core'
 
 export default function ErrorPage(): JSX.Element {
+  const navigate = useNavigate()
   const { setNavIndex } = useGlobalStore()
+
+  const moveHome = () => {
+    setNavIndex(0)
+    navigate('/')
+  }
 
   return (
     <Container className={ErrorClass.root}>
@@ -12,8 +19,8 @@ export default function ErrorPage(): JSX.Element {
         Unfortunately, this is only a 404 page. <br />
         You may have error, or the page hasn't been developed yet.
       </Text>
-      <Group justify="center" onClick={() => setNavIndex(0)}>
-        <Button variant="light" radius="md" size="md">
+      <Group justify="center">
+        <Button variant="light" radius="md" size="md" onClick={moveHome}>
           Take me back to home page
         </Button>
       </Group>

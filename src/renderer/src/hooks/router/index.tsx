@@ -1,16 +1,16 @@
 import HomePage from '@renderer/pages/HomePage'
+import DeployPage from '@renderer/pages/DeployPage'
 import ErrorPage from '@renderer/pages/ErrorPage'
-import Icon from '@atom/Icon'
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
 
 const router: RouteObject = {
   path: '/',
-  element: HomePage(),
-  errorElement: ErrorPage(),
+  element: <HomePage />,
+  errorElement: <ErrorPage />,
   children: [
     {
       path: '/deploy',
-      element: Icon({ name: 'AArrowDown' })
+      element: <DeployPage />
     }
   ]
 }

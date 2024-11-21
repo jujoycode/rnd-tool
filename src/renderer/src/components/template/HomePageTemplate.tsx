@@ -1,6 +1,6 @@
 import { AppShell, type AppShellProps } from '@mantine/core'
 import { Outlet } from 'react-router-dom'
-import Navbar from '../organism/Navbar'
+import Navbar from '@organism/Navbar'
 
 export default function HomePageTemplate({ ...props }: AppShellProps) {
   return (

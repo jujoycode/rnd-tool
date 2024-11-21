@@ -1,6 +1,7 @@
 .activeItem {
-  background-color: transparent;
-  color: var(--mantine-color-myColor-9);
+  background-color: var(--mantine-color-myColor-1);
+  border-radius: var(--mantine-radius-md);
+  color: var(--mantine-color-myColor-7);
 }
 
 .activeItem:hover {
@@ -20,6 +21,7 @@
 
 .defaultItem:hover {
   background-color: var(--mantine-color-gray-1);
+  border-radius: var(--mantine-radius-md);
 }
 
 .defaultIcon {

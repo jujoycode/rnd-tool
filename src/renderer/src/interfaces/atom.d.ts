@@ -15,4 +15,4 @@ interface NavItemProps {
   onItemClick: (index: number) => void
 }
 
-export type { IconProps, NavItemProps }
+export type { IconName, IconProps, NavItemProps }

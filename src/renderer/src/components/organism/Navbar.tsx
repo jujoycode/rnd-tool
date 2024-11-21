@@ -1,11 +1,11 @@
-import { useEffect } from 'react'
-import { useNavigate } from 'react-router-dom'
 import { Divider, Stack } from '@mantine/core'
 import { useGlobalStore } from '@hooks/stores/GlobalStore'
 import NavbarHeader from '@molecule/NavbarHeader'
 import NavbarFooter from '@molecule/NavbarFooter'
 import NavItem from '@atom/NavItem'
 import type { NavItemProps } from '@interfaces/atom'
+import { useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function Navbar(): JSX.Element {
   const navigate = useNavigate()
