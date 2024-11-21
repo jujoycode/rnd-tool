@@ -1,0 +1,28 @@
+.activeItem {
+  background-color: transparent;
+  color: var(--mantine-color-myColor-9);
+}
+
+.activeItem:hover {
+  background-color: var(--mantine-color-gray-1);
+}
+
+.activeIcon {
+  color: var(--mantine-color-myColor-9);
+  transform: scale(1.2);
+  transition: all 0.3s;
+}
+
+.defaultItem {
+  color: var(--mantine-color-gray-7);
+  transition: all 0.3s;
+}
+
+.defaultItem:hover {
+  background-color: var(--mantine-color-gray-1);
+}
+
+.defaultIcon {
+  color: var(--mantine-color-gray-7);
+  transition: all 0.3s;
+}
