@@ -18,6 +18,8 @@ interface ItemCardProps {
     label: string
     color: string
   }[]
+  nextPath?: string
+  children?: React.ReactNode
 }
 
 export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps }

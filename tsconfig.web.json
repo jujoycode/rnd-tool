@@ -17,6 +17,7 @@
       "@molecule/*": ["src/renderer/src/components/molecule/*"],
       "@organism/*": ["src/renderer/src/components/organism/*"],
       "@template/*": ["src/renderer/src/components/template/*"],
+      "@pages/*": ["src/renderer/src/pages/*"],
       "@hooks/*": ["src/renderer/src/hooks/*"],
       "@interfaces/*": ["src/renderer/src/interfaces/*"],
       "@styles/*": ["src/renderer/src/styles/*"]

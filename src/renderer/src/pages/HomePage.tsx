@@ -1,5 +1,6 @@
-import { type AppShellProps } from '@mantine/core'
-import HomePageTemplate from '@renderer/components/template/HomePageTemplate'
+import { AppShell, type AppShellProps } from '@mantine/core'
+import { Outlet } from 'react-router-dom'
+import Navbar from '@organism/Navbar'
 
 export default function HomePage(): JSX.Element {
   const AppConfig: AppShellProps = {
@@ -10,5 +11,15 @@ export default function HomePage(): JSX.Element {
     padding: 'md'
   }
 
-  return <HomePageTemplate {...AppConfig} />
+  return (
+    <AppShell {...AppConfig}>
+      <AppShell.Navbar p="md">
+        <Navbar />
+      </AppShell.Navbar>
+
+      <AppShell.Main>
+        <Outlet />
+      </AppShell.Main>
+    </AppShell>
+  )
 }

@@ -1,8 +1,11 @@
 import { Badge, Button, Group, Paper, Stack, Text } from '@mantine/core'
+import { useNavigate } from 'react-router-dom'
+import Icon from '@atom/Icon'
 import type { ItemCardProps } from '@interfaces/molecule'
-import Icon from '../atom/Icon'
 
-export default function ItemCard({ label, iconName, resource }: ItemCardProps): JSX.Element {
+export default function ItemCard({ label, iconName, resource, nextPath, children }: ItemCardProps): JSX.Element {
+  const navigate = useNavigate()
+
   return (
     <Paper withBorder shadow="md" radius="md" p="md">
       <Stack mt="md" mb="md">
@@ -19,7 +22,9 @@ export default function ItemCard({ label, iconName, resource }: ItemCardProps): 
         </Group>
       </Stack>
 
-      <Button fullWidth mt="xl" variant="light" color="gray.8" radius="md">
+      {children}
+
+      <Button fullWidth mt="xl" variant="outline" radius="md" onClick={() => navigate(nextPath!)}>
         Start
       </Button>
     </Paper>

@@ -17,6 +17,7 @@ export default defineConfig({
         '@molecule': resolve('src/renderer/src/components/molecule'),
         '@organism': resolve('src/renderer/src/components/organism'),
         '@template': resolve('src/renderer/src/components/template'),
+        '@pages': resolve('src/renderer/src/pages'),
         '@hooks': resolve('src/renderer/src/hooks'),
         '@interfaces': resolve('src/renderer/src/interfaces'),
         '@styles': resolve('src/renderer/src/styles')

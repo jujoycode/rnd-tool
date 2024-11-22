@@ -1,7 +1,8 @@
-import HomePage from '@renderer/pages/HomePage'
-import DeployPage from '@renderer/pages/DeployPage'
-import ErrorPage from '@renderer/pages/ErrorPage'
 import { createBrowserRouter, type RouteObject } from 'react-router-dom'
+import HomePage from '@pages/HomePage'
+import DeployPage from '@pages/DeployPage'
+import ErrorPage from '@pages/ErrorPage'
+import DeployVersionMapPage from '@pages/DeployVersionMapPage'
 
 const router: RouteObject = {
   path: '/',
@@ -11,6 +12,22 @@ const router: RouteObject = {
     {
       path: '/deploy',
       element: <DeployPage />
+    },
+    {
+      path: '/deploy/application',
+      element: <></>
+    },
+    {
+      path: '/deploy/studio',
+      element: <></>
+    },
+    {
+      path: '/deploy/lambda',
+      element: <></>
+    },
+    {
+      path: '/deploy/versionMap',
+      element: <DeployVersionMapPage />
     }
   ]
 }
