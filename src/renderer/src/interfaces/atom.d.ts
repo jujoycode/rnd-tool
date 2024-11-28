@@ -15,4 +15,19 @@ interface NavItemProps {
   onItemClick: (index: number) => void
 }
 
-export type { IconName, IconProps, NavItemProps }
+interface SegmentButtonProps {
+  value?: string
+  onChange?: (value: string) => void
+  data: {
+    value: string
+    label?: string
+    icon: IconName
+  }[]
+}
+
+interface JsonInputProps {
+  value: string
+  onChange: (value: string) => void
+}
+
+export type { IconName, IconProps, NavItemProps, SegmentButtonProps, JsonInputProps }

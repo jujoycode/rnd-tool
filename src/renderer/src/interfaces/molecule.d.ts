@@ -22,4 +22,15 @@ interface ItemCardProps {
   children?: React.ReactNode
 }
 
-export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps }
+interface CheckListProps {
+  size?: {
+    width: string
+    height: number
+  }
+  label: string
+  description: string
+  required: boolean
+  items: string[]
+}
+
+export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps, CheckListProps }

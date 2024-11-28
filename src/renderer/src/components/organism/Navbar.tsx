@@ -14,6 +14,7 @@ export default function Navbar(): JSX.Element {
   const navItems = [
     { label: 'Home', iconName: 'House', path: '/' },
     { label: 'Deploy', iconName: 'Rocket', path: '/deploy' },
+    { label: 'Region', iconName: 'Earth', path: '/region' },
     { label: 'Resource', iconName: 'Package', path: '/resource' },
     { label: 'Utility', iconName: 'PencilRuler', path: '/utility' },
     { label: 'Setting', iconName: 'Settings', path: '/setting' },

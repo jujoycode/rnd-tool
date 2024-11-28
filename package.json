@@ -21,11 +21,16 @@
     "build:linux": "electron-vite build && electron-builder --linux"
   },
   "dependencies": {
+    "@codemirror/lang-json": "^6.0.1",
+    "@codemirror/lint": "^6.8.3",
     "@electron-toolkit/preload": "^3.0.1",
     "@electron-toolkit/utils": "^3.0.0",
     "@mantine/core": "^7.14.1",
     "@mantine/dropzone": "^7.14.1",
     "@mantine/hooks": "^7.14.1",
+    "@mantine/notifications": "^7.14.2",
+    "@uiw/codemirror-theme-xcode": "^4.23.6",
+    "@uiw/react-codemirror": "^4.23.6",
     "date-fns": "^4.1.0",
     "electron-updater": "^6.1.7",
     "lucide-react": "^0.460.0",
