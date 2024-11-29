@@ -20,7 +20,8 @@ export default defineConfig({
         '@pages': resolve('src/renderer/src/pages'),
         '@hooks': resolve('src/renderer/src/hooks'),
         '@interfaces': resolve('src/renderer/src/interfaces'),
-        '@styles': resolve('src/renderer/src/styles')
+        '@styles': resolve('src/renderer/src/styles'),
+        '@constant': resolve('src/renderer/src/constant')
       }
     },
     plugins: [react()]

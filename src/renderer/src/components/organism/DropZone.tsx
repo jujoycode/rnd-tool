@@ -23,7 +23,6 @@ export default function DropZone({
   }
 
   const handleOnDrop = (acceptedFiles: FileWithPath[]) => {
-    console.log('acceptedFiles', acceptedFiles)
     setFiles(acceptedFiles)
   }
 
@@ -80,30 +79,26 @@ export default function DropZone({
         </Dropzone>
       </Paper>
 
-      {files.length > 0 && (
-        <List spacing="md" ml="xl">
-          {files.map((file, index) => (
-            <List.Item key={index}>
-              <Group justify="space-between">
-                <Text size="sm">{file.name}</Text>
-                <Text size="sm" c="dimmed">
-                  {formatFileSize(file.size)}
-                </Text>
-
-                <ActionIcon
-                  variant="subtle"
-                  size={16}
-                  radius="xl"
-                  color="gray.6"
-                  onClick={() => handleRemoveFile(index)}
-                >
-                  <Icon name="X" />
-                </ActionIcon>
-              </Group>
-            </List.Item>
-          ))}
-        </List>
-      )}
+      {files.length > 0 &&
+        files.map((file, index) => (
+          <Group pl="md" key={index} gap={5}>
+            <Icon name="File" size={16} strokeWidth={1} />
+            <Text size="sm">{file.name}</Text>
+            <Text size="sm" c="dimmed">
+              {formatFileSize(file.size)}
+            </Text>
+            <ActionIcon
+              ml="sm"
+              variant="subtle"
+              size={16}
+              radius="xl"
+              color="red.5"
+              onClick={() => handleRemoveFile(index)}
+            >
+              <Icon name="X" size={16} strokeWidth={1} />
+            </ActionIcon>
+          </Group>
+        ))}
     </Stack>
   )
 }

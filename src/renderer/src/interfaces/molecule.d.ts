@@ -29,8 +29,15 @@ interface CheckListProps {
   }
   label: string
   description: string
-  required: boolean
+  required?: boolean
   items: string[]
 }
 
-export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps, CheckListProps }
+interface PopupProps {
+  title: string
+  content: React.ReactNode
+  opened: boolean
+  onClose: () => void
+}
+
+export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps, CheckListProps, PopupProps }

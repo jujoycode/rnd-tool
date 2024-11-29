@@ -11,6 +11,10 @@ export default function HomePage(): JSX.Element {
     padding: 'md'
   }
 
+  // Capacitance by region
+  // 위잿 형식 개발 필요
+  // 디자인 레퍼런스: https://allo.blog/news/
+
   return (
     <AppShell {...AppConfig}>
       <AppShell.Navbar p="md">

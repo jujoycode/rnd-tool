@@ -20,7 +20,8 @@
       "@pages/*": ["src/renderer/src/pages/*"],
       "@hooks/*": ["src/renderer/src/hooks/*"],
       "@interfaces/*": ["src/renderer/src/interfaces/*"],
-      "@styles/*": ["src/renderer/src/styles/*"]
+      "@styles/*": ["src/renderer/src/styles/*"],
+      "@constant/*": ["src/renderer/src/constant/*"]
     }
   }
 }
