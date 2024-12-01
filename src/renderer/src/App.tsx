@@ -7,7 +7,7 @@ import toolRouter from './hooks/router'
 export default function App(): JSX.Element {
   return (
     <MantineProvider theme={toolTheme}>
-      <Notifications position="bottom-right" zIndex={9999} />
+      <Notifications position="bottom-right" />
       <RouterProvider
         router={toolRouter}
         future={{

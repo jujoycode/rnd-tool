@@ -15,7 +15,7 @@ const myColor: MantineColorsTuple = [
 
 const toolTheme = createTheme({
   primaryColor: 'myColor',
-  defaultRadius: 'md',
+  defaultRadius: 'sm',
   colors: {
     myColor
   }

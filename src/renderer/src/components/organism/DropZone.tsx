@@ -1,4 +1,4 @@
-import { Group, Paper, rem, Text, Stack, List, ActionIcon } from '@mantine/core'
+import { Group, Paper, rem, Text, Stack, ActionIcon } from '@mantine/core'
 import { Dropzone, type FileWithPath, type FileRejection } from '@mantine/dropzone'
 import { showNotification } from '@mantine/notifications'
 import Icon from '@atom/Icon'
@@ -42,7 +42,7 @@ export default function DropZone({
 
   return (
     <Stack gap="sm">
-      <Paper withBorder>
+      <Paper withBorder radius="md">
         <Dropzone onDrop={handleOnDrop} onReject={handleOnReject} {...props}>
           <Group justify="center" gap="xl" mih={220} style={{ pointerEvents: 'none' }}>
             <Dropzone.Accept>

@@ -5,6 +5,7 @@ import type { SegmentButtonProps } from '@interfaces/atom'
 export default function SegmentButton({ data, value, onChange }: SegmentButtonProps) {
   return (
     <SegmentedControl
+      radius="md"
       data={data.map((item) => ({
         value: item.value,
         label: (

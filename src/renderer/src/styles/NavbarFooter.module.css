@@ -1,0 +1,10 @@
+.user {
+  padding: 3px;
+}
+
+.user:hover{
+  cursor: pointer;
+  padding: 3px;
+  border-radius: 10px;
+  background-color: #eeeeee;
+}

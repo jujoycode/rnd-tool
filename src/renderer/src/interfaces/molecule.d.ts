@@ -34,10 +34,11 @@ interface CheckListProps {
 }
 
 interface PopupProps {
-  title: string
-  content: React.ReactNode
-  opened: boolean
-  onClose: () => void
+  data: string[]
+  searchable?: boolean
+  selectable?: boolean
+  selectedData?: string[]
+  onSelectionChange?: (value: string[]) => void
 }
 
 export type { NavbarHeaderProps, NavbarFooterProps, ItemCardProps, CheckListProps, PopupProps }
