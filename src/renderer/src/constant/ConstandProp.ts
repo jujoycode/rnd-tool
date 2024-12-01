@@ -26,5 +26,7 @@ export const MapFileDropZoneProps: DropZoneProps = {
   rejectIcon: 'X',
   accept: ['application/json'],
   maxSize: 10 * 1024 ** 2,
-  maxFiles: 1
+  maxFiles: 1,
+  showItemList: true,
+  itemListPosition: 'flex-end'
 }

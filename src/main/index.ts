@@ -1,6 +1,11 @@
+import 'reflect-metadata'
 import { app, shell, BrowserWindow, ipcMain } from 'electron'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import { join } from 'path'
+
+// ========================= DB =========================
+import { ConsolDataSource } from './db'
+import { qt_user } from './db/entity/qt_user'
 
 // ========================= API =========================
 import { getTotalFileCount, uploadToS3 } from './api'
@@ -40,6 +45,8 @@ app.whenReady().then(() => {
   app.on('browser-window-created', (_, window) => {
     optimizer.watchWindowShortcuts(window)
   })
+
+  getUser()
 
   // ==================== IPC ====================
   // S3 Deploy API (Application / Console)
@@ -83,3 +90,15 @@ app.on('window-all-closed', () => {
     app.quit()
   }
 })
+
+async function getUser() {
+  try {
+    const userDB = ConsolDataSource.getRepository(qt_user)
+    const a = await userDB.find()
+
+    console.log(a)
+  } catch (error) {
+    console.error('Error.')
+    console.error(error)
+  }
+}

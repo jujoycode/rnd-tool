@@ -9,6 +9,8 @@ interface DropZoneProps extends Partial<DropzoneProps> {
   idleIcon: IconName
   acceptIcon: IconName
   rejectIcon: IconName
+  showItemList?: boolean
+  itemListPosition?: 'flex-start' | 'flex-end'
 }
 
 export type { DropZoneProps }

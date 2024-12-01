@@ -12,6 +12,8 @@ export default function DropZone({
   idleIcon,
   acceptIcon,
   rejectIcon,
+  showItemList,
+  itemListPosition,
   ...props
 }: DropZoneProps) {
   const formatFileSize = (bytes: number) => {
@@ -79,9 +81,10 @@ export default function DropZone({
         </Dropzone>
       </Paper>
 
-      {files.length > 0 &&
+      {showItemList &&
+        files.length > 0 &&
         files.map((file, index) => (
-          <Group pl="md" key={index} gap={5}>
+          <Group justify={itemListPosition ?? 'flex-start'} pl="md" pr="md" key={index} gap={5}>
             <Icon name="File" size={16} strokeWidth={1} />
             <Text size="sm">{file.name}</Text>
             <Text size="sm" c="dimmed">
