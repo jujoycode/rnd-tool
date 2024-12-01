@@ -1,5 +1,16 @@
+# Sensitive
+.env
+.key
+
+# Node modules
 node_modules
+
+# Dist
 dist
 out
-.DS_Store
+
+# Logs
 *.log*
+
+# Other
+.DS_Store
