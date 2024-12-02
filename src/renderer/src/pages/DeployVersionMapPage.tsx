@@ -14,7 +14,7 @@ export default function DeployVersionMapPage() {
   const [activeTab, setActiveTab] = useState<'file' | 'json'>('file')
   const [files, setFiles] = useState<FileWithPath[]>([])
   const [json, setJson] = useState<string>('{}')
-  const [targetMap, setTargetMap] = useState<string>()
+  // const [targetMap, setTargetMap] = useState<string>()
   const [targetApplication, setTargetApplication] = useState<string[]>([])
 
   const [buttonCondition, setButtonCondition] = useState<boolean>(true)
@@ -48,6 +48,14 @@ export default function DeployVersionMapPage() {
       setButtonCondition(true)
     }
   }, [json])
+
+  const handleDeploy = () => {
+    console.log('ipc call')
+    window.electron.ipcRenderer.send('uploadToS3', {
+      targetBucket: 'dev.repo.calsplatz.com',
+      targetPath: 'testPath.png'
+    })
+  }
 
   return (
     <>
@@ -101,7 +109,7 @@ export default function DeployVersionMapPage() {
         </Stack>
 
         <Group mt={80} justify="flex-end">
-          <Button disabled={buttonCondition} w="20%" radius="md">
+          <Button disabled={buttonCondition} w="20%" radius="md" onClick={() => handleDeploy()}>
             Start
           </Button>
         </Group>

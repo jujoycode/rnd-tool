@@ -17,8 +17,7 @@ export default function Navbar(): JSX.Element {
     { label: 'Region', iconName: 'Earth', path: '/region' },
     { label: 'Resource', iconName: 'Package', path: '/resource' },
     { label: 'Utility', iconName: 'PencilRuler', path: '/utility' },
-    { label: 'Users', iconName: 'BookUser', path: '/users' },
-    { label: 'Setting', iconName: 'Settings', path: '/setting' }
+    { label: 'Credentials', iconName: 'KeySquare', path: '/credential' }
   ] as NavItemProps[]
 
   useEffect(() => {

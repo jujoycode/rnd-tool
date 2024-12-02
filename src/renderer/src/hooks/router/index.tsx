@@ -3,6 +3,7 @@ import HomePage from '@pages/HomePage'
 import DeployPage from '@pages/DeployPage'
 import ErrorPage from '@pages/ErrorPage'
 import DeployVersionMapPage from '@pages/DeployVersionMapPage'
+import CredentialPage from '@pages/CredentialPage'
 
 const router: RouteObject = {
   path: '/',
@@ -28,6 +29,10 @@ const router: RouteObject = {
     {
       path: '/deploy/versionMap',
       element: <DeployVersionMapPage />
+    },
+    {
+      path: '/credential',
+      element: <CredentialPage />
     }
   ]
 }

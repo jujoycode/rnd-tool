@@ -1,8 +1,8 @@
 import { SystemColumn } from './SystemColumn'
 import { Entity, Column } from 'typeorm'
 
-@Entity()
-export class qt_user extends SystemColumn {
+@Entity('qt_user')
+export class QtUser extends SystemColumn {
   @Column('varchar')
   'USR_NAME': string
 

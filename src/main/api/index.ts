@@ -3,7 +3,7 @@
  * @desc 대상 경로에 존재하는 모든 파일 개수와 전체 파일 경로를 반환합니다. (Recursive)
  * @returns { totalFileCount: number; totalFilePaths: string[] }
  */
-function getTotalFileCount(targetPath: string) {
+function getTotalFileCount(targetPath: string): { totalFileCount: number; totalFilePaths: string[] } {
   console.log(`[getTotalFileCount] Root Path: ${targetPath}`)
 
   return {
